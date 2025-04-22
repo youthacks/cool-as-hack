@@ -1,46 +1,354 @@
+---
+import Card1 from "../components/UI_components/card1.astro";
+import Card2 from "../components/UI_components/card2.astro";
+---
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Poetsen+One&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <title>Cool As Hack</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background-color: white;
+      color: white;
+      font-family: "Bungee", sans-serif;
+    }
 
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>Cool As Hack</title>
-  </head>
-  <body>
-    <div class="container">
-      <header>
+    .container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    header {
+      background-image: url('/images/header_bg.png');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .crane, .craneflipped {
+      z-index:5;
+      position: absolute;
+      pointer-events: none;
+      transition: transform 0.6s ease-out, left 0.6s ease-out, top 0.6s ease-out; /* Smooth transition */
+      pointer-events: auto; /* Make sure the cranes can be interacted with */
+    }
+
+    .crane {
+      width: 6%;
+      animation: flap 1s infinite alternate;
+    }
+
+    @keyframes flap {
+      0% { content: url('/images/crane1b.png'); transform: translateY(5px); }
+      50% { content: url('/images/crane1a.png'); transform: translateY(-5px); }
+      75% { content: url('/images/crane1b.png'); transform: translateY(5px); }
+      100% { content: url('/images/crane1a.png'); transform: translateY(-5px); }
+    }
+
+    .craneflipped {
+      width: 10%;
+      animation: flap-flipped 1s infinite alternate;
+    }
+
+    @keyframes flap-flipped {
+      0% { content: url('/images/crane1b.png'); transform: translateY(5px) scaleX(-1); }
+      50% { content: url('/images/crane1a.png'); transform: translateY(-5px) scaleX(-1); }
+      75% { content: url('/images/crane1b.png'); transform: translateY(5px) scaleX(-1); }
+      100% { content: url('/images/crane1a.png'); transform: translateY(-5px) scaleX(-1); }
+    }
+
+    .crane:hover, .craneflipped:hover {
+      transition: transform 0.1s ease-out, left 0.1s ease-out, top 0.1s ease-out; /* Smoothly move away */
+    }
+
+
+    .logo {
+      max-width: 800px;
+      min-width: 150px;
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.5));
+      z-index: 10;
+      transition: transform 0.3s ease-in-out;
+    }
+
+
+    .logo:hover {
+      transform: scale(1.1);
+    }
+
+    .youthacks-logo {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      width: 15%;
+      height: auto;
+      z-index: 10;
+    }
+
+    .youthacks-logo:hover {
+      transform: scale(1.1);
+    }
+
+    .white-section {
+      display: flex;
+      align-items: center;
+      padding: 4rem;
+    }
+
+    .blue-section {
+      display: flex;
+      align-items: center;
+      padding: 4rem;
+      background-color:#6255bb;
+    }
+
+    .white-section img {
+      width: 100%;
+      height: auto;
+      margin-right: 7rem;
+    }
+
+    .text-box {
+      padding: 1rem;
+      border-radius: 4px;
+      width: 100%;
+      color: #f40c54;
+    }
+
+    .gear {
+      width: 5%;
+      max-width: 5%;
+      height: auto;
+      position: absolute;
+      z-index: 4;
+      transition: transform 1s ease-in-out;
+    }
+
+    .gear:hover{
+      transform:scale(1.2) rotate(360deg);
+    }
+
+    .laptop-crane{
+      position:absolute;
+      width:10%; 
+      height:auto; 
+      position:absolute; 
+      z-index:0;
+
+    }
+    
+    .laptop-crane img {
+      animation: crane-moving 2s infinite alternate ease-in-out;
+    }
+
+    @keyframes crane-moving{
+      0%{transform: translateY(10px)}
+      100%{transform: translateY(-10px)}
+    }
+    
+
+    .magenta-section {
+      display: flex;
+      align-items: center;
+      padding: 4rem;
+      background-color:#f10e52;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, white 100%);
+      pointer-events: none;
+      opacity: 1;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    header.hide-gradient::after {
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="https://youthacks.org" target="_blank">
+        <img src="/images/youthacks-logo.svg" alt="Youthacks Logo" class="youthacks-logo" />
+      </a>
+      <div class="tilt-logo" data-tilt data-tilt-max="15" data-tilt-speed="400">
         <img src="/images/logo.svg" alt="Logo" class="logo" />
-      </header>
+      </div>
+
+            <!-- Original cranes -->
+      <img src="/images/crane1a.png" alt="Paper Crane" class="craneflipped" style="top: 50%; left: 5%;">
+      <img src="/images/crane1a.png" alt="Paper Crane" class="craneflipped" style="top: 5%; left: 70%;">
+      <img src="/images/crane1a.png" alt="Paper Crane" class="crane" style="top: 20%; right: 10%;">
+      <img src="/images/crane1a.png" alt="Paper Crane" class="crane" style="top: 40%; left: 15%;">
+      <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js"></script>
+    </header>
+
+    <div class="white-section">
+      <img src="/images/crane.png" style="width:50%; height:auto; z-index:5; margin-bottom:0px;"/>
+      <div class = "laptop-crane" style="top:115%; left:30%;">
+        <img src="/images/crane1a.png" >
+      </div>
+      <div class = "laptop-crane" style="top:120%; left:20%; width:5%; transform: rotate(45deg);">
+        <img src="/images/crane1b.png" >
+      </div>
+      <Card1>
+        <h1>What Is Cool As Hack?</h1>
+        <p>Cool as hack is a <a href="https://en.wikipedia.org/wiki/Hackathon">Hackathon</a>
+        for Secondary school students. Held right here in Cambridge,
+        Cool as hack is a hackathon where
+        you get to work on the coolest projects you can,
+        and then show them to the world in
+        <a href="https://www.raspberrypi.com/">Raspberry Pi's</a>
+        global competition, <a href="https://online.coolestprojects.org/">Coolest projects</a></p>
+      </Card1>
+      <img src="/images/gear.png" class="gear" style="top: 20%; left: 5%;">
+      <img src="/images/gear.png" class="gear" style="top: 40%; right: 5%;">
+      <img src="/images/gear.png" class="gear" style="top: 115%; right: -2em;">
+      <img src="/images/gear.png" class="gear" style="top: 6%; right: 40%;">
+      <img src="/images/gear.png" class="gear" style="top: 80%; right: 22%;">
+      <img src="/images/gear.png" class="gear" style="top: 65%; left: 30%;">
     </div>
-  </body>
-</html>
+    <div class = "blue-section" style = "padding-bottom:0rem;">
+      <Card2>
+        <h1>Is this all free?</h1>
+        <p>Yes, all of it is free! Food, drinks, snacks and swag are all provided. 
+          All you need to bring is a laptop to code on, a charger and if you'd like, a cool project to work on!
+          All alergies and dietary requirements will also be catered for.
+        </p>
+      </Card2>
+      <Card2>
+        <h1>What have you done in the past?</h1>
+        <p>In the past, we have organised other really fun events! We've organised
+        <a href="https://scrapyard.hackclub.com/cambridge">Scrapyard Cambridge</a> and 
+        <a href="https://scrapyard.hackclub.com/london">Scrapyard London</a>, hackathons 
+        where people make the stupidest stuff possible, as well as 
+        <a href="https://counterspell.hackclub.com/cambridge">Counterspell Cambridge</a>, a collaborative 
+        game jam. 
+        </p>
+      </Card2>
+    </div>
+    <div class = "blue-section" style = "padding-top:0rem;">
+      <Card2>
+        <h1>What If My Parents Have Concerns?</h1>
+        <p>We'll be releasing a parent's guide soon, but if your
+          parents do have any queries they can 
+          <a href="https://youthacks.org/contact-us">reach out to us</a>. 
+          All of our events are Adult supervised, and our Adult volunteers have 
+          safeguarding training and are DBS checked. For more info, they can also check out 
+          raspberry Pi's <a href="https://www.raspberrypi.org/safeguarding">safeguarding page</a>. 
+        </p>
+      </Card2>
+      <Card2>
+        <h1>Who can attend?</h1>
+        <p>Cool as Hack is open to all secondary students, no matter their skill level!
+          Even if you're not experienced in coding, you can still participate. We need people
+          that are good at art, that are good at making things, and that are good at collaborating.
+          Whatever your skill level, let's all learn and create together!
+        </p>
+      </Card2>
+    </div>
+    <div class="magenta-section" style="padding: 0rem;">
+      <h1 style="margin-left: auto; margin-right:auto; margin-top:4rem;"> 
+        What's happening at Cool as Hack?
+      </h1>
+    </div>
+    <div class="magenta-section" style="padding:0rem;">
+      <h2 style="text-align: center; margin-left: auto; margin-right:auto; margin-bottom:4rem;">
+        Doors open & Registration - 8:45 
+        <br> Opening Ceremony - 9:00 <br>  
+        Form teams, start working on projects! - 9:45 <br>
+      Lunch - 12:00 <br>
+      Continue working on projects - 13:00
+      <br> Dinner - 17:00
+      <br> Project Demos - 18:30
+      <br> Closing Ceremony - 20:00
+      <br> Home! - 20:45</h2>
+      
+    </div>
+    <div class = "white-section">
+      <h1 style="background: -webkit-linear-gradient(#8f8ab1, #f10e52); -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; margin-left:auto;  margin-right:auto; font-size:50px">
+      Thank you, Sponsors!</h1>
+    </div>
+    <div class="white-section">
+      <Card1><h1 style="background: -webkit-linear-gradient(#8f8ab1, #f10e52); -webkit-background-clip: text; 
+        -webkit-text-fill-color: transparent;">Aromi</h1></Card1>
+      <Card1><h1 style="background: -webkit-linear-gradient(#8f8ab1, #f10e52); -webkit-background-clip: text; 
+          -webkit-text-fill-color: transparent;">Raspberry Pi</h1></Card1>
+    </div>
+  </div>
 
-<style>
-  html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #f40c54;
-    color: white;
-    font-family: system-ui, sans-serif;
-  }
-
-  .container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100%;
-  }
-
-  header {
-    padding: 2rem;
-    text-align: center;
-  }
-
-  .logo {
-    max-width: 800px;
-	min-width: 150px;
-	width: 50%;
-    height: auto;
-  }
-</style>
+  <script>
+    const whiteSection = document.querySelector('.white-section');
+    const header = document.querySelector('header');
+  
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.intersectionRatio > 0.1) {
+          header.classList.add('hide-gradient');
+        } else {
+          header.classList.remove('hide-gradient');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+  
+    observer.observe(whiteSection);
+  </script>
+  <script>
+    const cranes = document.querySelectorAll('.crane, .craneflipped');
+  
+    cranes.forEach(crane => {
+      crane.addEventListener('mouseenter', (e) => {
+        // Get the position of the crane
+        const craneRect = crane.getBoundingClientRect();
+        const craneCenterX = craneRect.left + craneRect.width / 2;
+        const craneCenterY = craneRect.top + craneRect.height / 2;
+        
+        // Get mouse cursor position
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+        
+        // Calculate the direction away from the cursor
+        const deltaX = mouseX - craneCenterX;
+        const deltaY = mouseY - craneCenterY;
+        
+        // Calculate a random angle and distance for movement (smaller range)
+        const randomAngle = Math.random() * 2 * Math.PI; // Random angle in radians
+        const randomDistance = Math.random() * 150 + 70; // Random distance between 30px to 80px
+  
+        // Calculate new position based on the random angle
+        const newX = craneCenterX + Math.cos(randomAngle) * randomDistance;
+        const newY = craneCenterY + Math.sin(randomAngle) * randomDistance;
+  
+        // Apply new position and set transition
+        crane.style.position = 'absolute'; // Make sure the position is absolute
+        crane.style.left = `${newX - craneRect.width / 2}px`;
+        crane.style.top = `${newY - craneRect.height / 2}px`;
+        crane.style.transition = 'transform 0.6s ease-out, left 0.6s ease-out, top 0.6s ease-out';
+      });
+    });
+  </script>
+  
+  
+</body>
