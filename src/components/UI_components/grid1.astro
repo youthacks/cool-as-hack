@@ -1,0 +1,43 @@
+<html>
+  <style>
+    
+
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-top: 2em;
+      justify-items: center;
+      gap: 2rem;
+    }
+
+    @media only screen and (max-width: 900px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .container :global(p) {
+      background: -webkit-linear-gradient(#8f8ab1, #f10e52);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-family: "Bungee", sans-serif;
+      font-weight: 600;
+      font-size: 2em;
+      font-style: normal;
+    }
+  </style>
+
+  <div>
+    <h1 style = "text-align: center ;
+    font-size: 4em;
+    background: -webkit-linear-gradient(#8f8ab1, #f10e52) ;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Bungee', sans-serif;
+    margin-top: 2rem;
+    margin-bottom: 1rem;">Thank you, sponsors!</h1>
+    <div class="container">
+      <slot />
+    </div>
+  </div>
+</html>

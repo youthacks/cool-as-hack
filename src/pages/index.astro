@@ -1,6 +1,8 @@
 ---
 import Card1 from "../components/UI_components/card1.astro";
 import Card2 from "../components/UI_components/card2.astro";
+import Card3 from "../components/UI_components/card3.astro";
+import Grid1 from "../components/UI_components/grid1.astro";
 ---
 <head>
   <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Poetsen+One&display=swap" rel="stylesheet">
@@ -88,6 +90,7 @@ import Card2 from "../components/UI_components/card2.astro";
       transform: scale(1.1);
     }
 
+    
     .youthacks-logo {
       position: absolute;
       top: 1rem;
@@ -107,6 +110,8 @@ import Card2 from "../components/UI_components/card2.astro";
       padding: 4rem;
     }
 
+    
+    
     .blue-section {
       display: flex;
       align-items: center;
@@ -126,6 +131,8 @@ import Card2 from "../components/UI_components/card2.astro";
       width: 100%;
       color: #f40c54;
     }
+
+    
 
     .gear {
       width: 5%;
@@ -182,6 +189,33 @@ import Card2 from "../components/UI_components/card2.astro";
     header.hide-gradient::after {
       opacity: 0;
     }
+
+    .sponsor-section {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      padding: 2rem 0;
+    }
+
+
+    .sponsor-section .container {
+      margin: 0;            
+      padding: 1rem;           
+      display: flex;          
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    /* target every <img> inside a Card1 container in the sponsor section */
+    .sponsor-section .container img {
+      width: clamp(80px, 10vw, 150px) !important;
+      height: auto;
+    }
+
+
   </style>
 </head>
 <body>
@@ -199,6 +233,7 @@ import Card2 from "../components/UI_components/card2.astro";
       <img src="/images/crane1a.png" alt="Paper Crane" class="craneflipped" style="top: 5%; left: 70%;">
       <img src="/images/crane1a.png" alt="Paper Crane" class="crane" style="top: 20%; right: 10%;">
       <img src="/images/crane1a.png" alt="Paper Crane" class="crane" style="top: 40%; left: 15%;">
+      
       <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js"></script>
     </header>
 
@@ -210,6 +245,186 @@ import Card2 from "../components/UI_components/card2.astro";
       <div class = "laptop-crane" style="top:120%; left:20%; width:5%; transform: rotate(45deg);">
         <img src="/images/crane1b.png" >
       </div>
+      <div class = "laptop-crane" style="top:130%; left:30%; width:2%; transform: rotate(-20deg); z-index:20;">
+        <img src="/images/crane1b.png" >
+      </div>
+      <div class = "laptop-crane" style="top:110%; left:30%; width:5%; transform: rotate(-10deg); z-index:20;">
+        <img src="/images/crane2.png" >
+      </div>
+      <div class = "laptop-crane" style="top:137%; left:20%; width:6%; transform: rotate(30deg) scaleX(-1); z-index:20;">
+        <img src="/images/crane2.png" >
+      </div>
+      <div class = "laptop-crane" style="top:107%; left:22%; width:6%; transform: rotate(30deg) scaleX(-1); z-index:20;">
+        <img src="/images/crane3.png" >
+      </div>
+      <div class = "laptop-crane" style="top:110%; left:35%; width:5%; transform: rotate(5deg); z-index:20;">
+        <img src="/images/crane4.png" >
+      </div>
+      <div class = "laptop-crane" style="top:107%; left:12%; width:6%; transform: rotate(0deg); z-index:20;">
+        <img src="/images/crane5.png" >
+      </div>
+      <div class = "laptop-crane" style="top:130%; left:15%; width:4%; transform: rotate(-20deg); z-index:20;">
+        <img src="/images/crane6.png" >
+      </div>
+      <div class = "laptop-crane" style="top:130%; left:35%; width:6%; transform: rotate(10deg); z-index:20;">
+        <img src="/images/crane2.png" >
+      </div>
+      <div class = "laptop-crane" style="top:132%; left:28%; width:4%; transform: rotate(-10deg) scaleX(-1); z-index:20;">
+        <img src="/images/crane1b.png" >
+      </div>
+      <div class = "laptop-crane" style="top:108%; left:16%; width:5%; transform: rotate(-10deg) scaleX(-1); z-index:20;">
+        <img src="/images/crane6.png" >
+      </div>
+      <div class = "laptop-crane" style="top:110%; left:5%; width:4%; transform: rotate(-30deg) scaleX(-1); z-index:20;">
+        <img src="/images/crane3.png" >
+      </div>
+      <div class = "laptop-crane" style="top:130%; left:43%; width:8%; transform: rotate(-30deg); z-index:20;">
+        <img src="/images/crane6.png" >
+      </div>
+      <div class="laptop-crane" style="top:125%; left:10%; width:6%; transform: rotate(15deg); z-index:10;">
+        <img src="/images/crane1a.png">
+      </div>
+      <div class="laptop-crane" style="top:112%; left:40%; width:4%; transform: rotate(-25deg); z-index:15;">
+        <img src="/images/crane1b.png">
+      </div>
+      <div class="laptop-crane" style="top:140%; left:18%; width:5%; transform: rotate(30deg) scaleX(-1); z-index:5;">
+        <img src="/images/crane2.png">
+      </div>
+      <div class="laptop-crane" style="top:135%; left:22%; width:3%; transform: rotate(-45deg); z-index:25;">
+        <img src="/images/crane3.png">
+      </div>
+      <div class="laptop-crane" style="top:117%; left:38%; width:7%; transform: rotate(5deg); z-index:12;">
+        <img src="/images/crane4.png">
+      </div>
+      <div class="laptop-crane" style="top:133%; left:8%; width:4%; transform: rotate(-10deg); z-index:18;">
+        <img src="/images/crane5.png">
+      </div>
+      <div class="laptop-crane" style="top:115%; left:26%; width:6%; transform: rotate(60deg); z-index:14;">
+        <img src="/images/crane6.png">
+      </div>
+      <div class="laptop-crane" style="top:120%; left:45%; width:5%; transform: rotate(-15deg) scaleX(-1); z-index:20;">
+        <img src="/images/crane1a.png">
+      </div>
+      <div class="laptop-crane" style="top:137%; left:38%; width:4%; transform: rotate(10deg); z-index:9;">
+        <img src="/images/crane2.png">
+      </div>
+      <div class="laptop-crane" style="top:142%; left:12%; width:6%; transform: rotate(-35deg); z-index:22;">
+        <img src="/images/crane5.png">
+      </div>
+      <div class="laptop-crane" style="top:125%; left:32%; width:7%; transform: rotate(20deg) scaleX(-1); z-index:17;">
+        <img src="/images/crane3.png">
+      </div>
+      <div class="laptop-crane" style="top:110%; left:48%; width:5%; transform: rotate(-10deg); z-index:11;">
+        <img src="/images/crane4.png">
+      </div>
+      <div class="laptop-crane" style="top:135%; left:26%; width:3%; transform: rotate(45deg); z-index:13;">
+        <img src="/images/crane6.png">
+      </div>
+      <div class="laptop-crane" style="top:120%; left:18%; width:6%; transform: rotate(5deg); z-index:19;">
+        <img src="/images/crane1b.png">
+      </div>
+      <div class="laptop-crane" style="top:110%; left:28%; width:6%; transform: rotate(10deg); z-index:-10;">
+        <img src="/images/crane1a.png">
+      </div>
+      <div class="laptop-crane" style="top:112%; left:32%; width:4%; transform: rotate(-20deg); z-index:-10;">
+        <img src="/images/crane3.png">
+      </div>
+      <div class="laptop-crane" style="top:108%; left:30%; width:5%; transform: rotate(5deg) scaleX(-1); z-index:-10;">
+        <img src="/images/crane2.png">
+      </div>
+      <div class="laptop-crane" style="top:115%; left:26%; width:3%; transform: rotate(15deg); z-index:-10;">
+        <img src="/images/crane6.png">
+      </div>
+      <div class="laptop-crane" style="top:118%; left:33%; width:7%; transform: rotate(-30deg); z-index:-10;">
+        <img src="/images/crane4.png">
+      </div>
+      <div class="laptop-crane" style="top:109%; left:25%; width:6%; transform: rotate(20deg); z-index:-10;">
+        <img src="/images/crane1b.png">
+      </div>
+      <div class="laptop-crane" style="top:122%; left:29%; width:5%; transform: rotate(-15deg); z-index:-10;">
+        <img src="/images/crane5.png">
+      </div>
+      <div class="laptop-crane" style="top:113%; left:27%; width:4%; transform: rotate(35deg); z-index:-10;">
+        <img src="/images/crane3.png">
+      </div>
+      <div class="laptop-crane" style="top:116%; left:34%; width:6%; transform: rotate(-10deg); z-index:-10;">
+        <img src="/images/crane2.png">
+      </div>
+      <div class="laptop-crane" style="top:106%; left:30%; width:3%; transform: rotate(25deg); z-index:-10;">
+        <img src="/images/crane6.png">
+      </div>
+      <!-- Lower cranes, still behind the laptop -->
+      <div class="laptop-crane" style="top:128%; left:26%; width:6%; transform: rotate(15deg); z-index:-10;">
+        <img src="/images/crane1a.png">
+      </div>
+      <div class="laptop-crane" style="top:130%; left:33%; width:5%; transform: rotate(-10deg); z-index:-10;">
+        <img src="/images/crane4.png">
+      </div>
+      <div class="laptop-crane" style="top:132%; left:29%; width:4%; transform: rotate(20deg); z-index:-10;">
+        <img src="/images/crane2.png">
+      </div>
+      <div class="laptop-crane" style="top:135%; left:27%; width:7%; transform: rotate(-25deg); z-index:-10;">
+        <img src="/images/crane6.png">
+      </div>
+      <div class="laptop-crane" style="top:137%; left:31%; width:3.5%; transform: rotate(30deg); z-index:-10;">
+        <img src="/images/crane1b.png">
+      </div>
+      <div class="laptop-crane" style="top:140%; left:34%; width:6%; transform: rotate(-15deg); z-index:-10;">
+        <img src="/images/crane5.png">
+      </div>
+      <div class="laptop-crane" style="top:125%; left:28%; width:4.5%; transform: rotate(5deg); z-index:-10;">
+        <img src="/images/crane3.png">
+      </div>
+      <div class="laptop-crane" style="top:133%; left:25%; width:5.5%; transform: rotate(12deg) scaleX(-1); z-index:-10;">
+        <img src="/images/crane2.png">
+      </div>
+      <div class="laptop-crane" style="top:118%; left:10%; width:5%; transform: rotate(-10deg); z-index:-10;">
+        <img src="/images/crane1a.png">
+      </div>
+      <div class="laptop-crane" style="top:120%; left:7%; width:4%; transform: rotate(15deg); z-index:-10;">
+        <img src="/images/crane2.png">
+      </div>
+      <div class="laptop-crane" style="top:125%; left:5%; width:6%; transform: rotate(-5deg) scaleX(-1); z-index:-10;">
+        <img src="/images/crane3.png">
+      </div>
+      <div class="laptop-crane" style="top:130%; left:12%; width:5.5%; transform: rotate(25deg); z-index:-10;">
+        <img src="/images/crane5.png">
+      </div>
+      <div class="laptop-crane" style="top:127%; left:15%; width:4.5%; transform: rotate(-20deg); z-index:-10;">
+        <img src="/images/crane4.png">
+      </div>
+      <div class="laptop-crane" style="top:133%; left:18%; width:5%; transform: rotate(10deg); z-index:-10;">
+        <img src="/images/crane6.png">
+      </div>
+      <div class="laptop-crane" style="top:115%; left:9%; width:6%; transform: rotate(-30deg); z-index:-10;">
+        <img src="/images/crane1b.png">
+      </div>
+      <div class="laptop-crane" style="top:112%; left:18%; width:4.5%; transform: rotate(10deg); z-index:-10;">
+        <img src="/images/crane3.png">
+      </div>
+      <div class="laptop-crane" style="top:116%; left:22%; width:4.5%; transform: rotate(-25deg); z-index:20;">
+        <img src="/images/crane5.png">
+      </div>
+      <div class="laptop-crane" style="top:120%; left:20%; width:5%; transform: rotate(15deg); z-index:-10;">
+        <img src="/images/crane4.png">
+      </div>
+      <div class="laptop-crane" style="top:124%; left:23%; width:6%; transform: rotate(5deg); z-index:20;">
+        <img src="/images/crane6.png">
+      </div>
+      <div class="laptop-crane" style="top:118%; left:16%; width:5.5%; transform: rotate(-10deg) scaleX(-1); z-index:-10;">
+        <img src="/images/crane2.png">
+      </div>
+      <div class="laptop-crane" style="top:122%; left:19%; width:4%; transform: rotate(30deg); z-index:20;">
+        <img src="/images/crane1a.png">
+      </div>
+      <div class="laptop-crane" style="top:125%; left:15%; width:4.8%; transform: rotate(-15deg); z-index:-10;">
+        <img src="/images/crane1b.png">
+      </div>
+
+
+
+
+
       <Card1>
         <h1>What Is Cool As Hack?</h1>
         <p>Cool as hack is a <a href="https://en.wikipedia.org/wiki/Hackathon">Hackathon</a>
@@ -284,20 +499,39 @@ import Card2 from "../components/UI_components/card2.astro";
       <br> Home! - 20:45</h2>
       
     </div>
-    <div class = "white-section">
-      <h1 style="background: -webkit-linear-gradient(#8f8ab1, #f10e52); -webkit-background-clip: text; 
-      -webkit-text-fill-color: transparent; margin-left:auto;  margin-right:auto; font-size:50px">
-      Thank you, Sponsors!</h1>
-    </div>
+
     <div class="white-section">
-      <Card1><h1 style="background: -webkit-linear-gradient(#8f8ab1, #f10e52); -webkit-background-clip: text; 
-        -webkit-text-fill-color: transparent;">Aromi</h1></Card1>
-      <Card1><h1 style="background: -webkit-linear-gradient(#8f8ab1, #f10e52); -webkit-background-clip: text; 
-          -webkit-text-fill-color: transparent;">Raspberry Pi</h1></Card1>
-      <Card1><h1 style="background: -webkit-linear-gradient(#8f8ab1, #f10e52); -webkit-background-clip: text; 
-          -webkit-text-fill-color: transparent;">GitHub</h1></Card1>
-      <Card1><h1 style="background: -webkit-linear-gradient(#8f8ab1, #f10e52); -webkit-background-clip: text; 
-          -webkit-text-fill-color: transparent;">Learn Anything</h1></Card1>
+      <Grid1>
+      <Card3>
+        <div class="wrapper"> 
+          <img src="images/aromi.png" alt="Aromi logo" />
+        </a>
+      </div>
+        
+           <p>Aromi</p> 
+         </Card3> 
+      <Card3>
+        <div class="wrapper">
+        
+          <img src="images/raspberrypi-logo.png" alt="Raspberry Pi logo" />
+         </div>
+        <p>Raspberry Pi</p> </Card3>
+      
+      <Card3>
+        <div class="wrapper">
+        
+          <img src="images/github-logo.png" alt="GitHub logo"/>
+        </div>
+        
+        <p >GitHub</p> </Card3>
+      <Card3>
+        <div class="wrapper">
+        
+          <img src="images/learnanything.png" alt="Learn Anything" />
+        </div>
+        
+       <p>Learn Anything</p> </Card3>
+      </Grid1>
     </div>
   </div>
 
