@@ -1,0 +1,60 @@
+<head><link href="https://fonts.googleapis.com/css2?family=Bungee&family=Poetsen+One&display=swap" rel="stylesheet"></head>
+<style>
+    .container {
+      display: block;
+      min-height: inherit;
+      margin: 2em;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 8px 8px 36px 0px rgba(0, 0, 0, 0.3);
+      padding: 2em;
+      color:#6255bb;
+    }
+    .container:hover {
+      transition: 0.4s;
+    }
+    .container :global(.wrapper) {
+      height: inherit;
+    }
+    .container :global(div img) {
+      width: 80%;
+      object-fit: cover;
+      height: 35vh;
+      display: flex;
+      margin: auto;
+  
+      border-radius: 18px;
+    }
+  
+    .container :global(h2) {
+      font-family: "Bungee", sans-serif; 
+      font-weight: 600;
+      font-style: normal;
+    }
+    .container :global(h3) {
+      font-family: "Bungee", sans-serif; 
+      font-weight: 500;
+      font-style: normal;
+    }
+    .container :global(p) {
+      font-family: "Bungee", sans-serif; 
+      font-weight: 400;
+      font-style: normal;
+      color:#8f8ab1;
+      font-size: large;
+    }
+    .container :global(a){
+        font-family: "Bungee", sans-serif; 
+        font-weight: 500;
+        font-style: normal;
+        color:#f10e52;
+    }
+    .container :global(a:hover){
+        color:#7c092c;
+        transform: scale(1.2);
+    }
+  </style>
+  
+  <div class="container">
+    <slot />
+  </div>
