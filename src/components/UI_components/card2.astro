@@ -1,9 +1,11 @@
 ---
-import card2bg from "../assets/card2bg.png";
+import card2bg from "../../assets/card2bg.png";
 ---
 
 <head><link href="https://fonts.googleapis.com/css2?family=Bungee&family=Poetsen+One&display=swap" rel="stylesheet"></head>
-<style>
+<style
+define:vars={{ image: `url("${card2bg.src}")` }}
+>
     .container {
       display: block;
       min-height: inherit;
@@ -12,7 +14,7 @@ import card2bg from "../assets/card2bg.png";
       overflow: hidden;
       box-shadow: 8px 8px 36px 0px rgba(0, 0, 0, 0.3);
       padding: 2em;
-      background-image: url({card2bg});
+      background-image: var(--image);
       background-repeat: no-repeat;
       background-size: cover;
       transition: transform 0.5s ease-in-out;
