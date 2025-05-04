@@ -1,6 +1,5 @@
 ---
 import { Image } from "astro:assets";
-import Loading from "../components/loading.jsx";
 
 import Card1 from "../components/UI_components/card1.astro";
 import Card2 from "../components/UI_components/card2.astro";
@@ -39,8 +38,8 @@ import Laptop from "../assets/laptop.svg";
   <style
   define:vars={{
     bg: `url("${headerBg.src}")`, 
-    crane1a: `url("${crane1a}")`,
-    crane1b: `url("${crane1b}")` 
+    crane1a: `url("${crane1a.src}")`,
+    crane1b: `url("${crane1b.src}")` 
   }}>
   body.loading {
   overflow: hidden;
@@ -137,29 +136,29 @@ import Laptop from "../assets/laptop.svg";
     }
 
     .crane {
-      width: 6%;
+      width: 5.5rem;
       animation: flap 1s infinite alternate;
       
     }
 
-    /* @keyframes flap {
-      0% { content: url('/images/crane1b.png'); transform: translateY(5px); }
-      50% { content: url('/images/crane1a.png'); transform: translateY(-5px); }
-      75% { content: url('/images/crane1b.png'); transform: translateY(5px); }
-      100% { content: url('/images/crane1a.png'); transform: translateY(-5px); }
-    } */
+    @keyframes flap {
+      0% { content: var(--crane1b); transform: translateY(5px); }
+      50% { content: var(--crane1a); transform: translateY(-5px); }
+      75% { content: var(--crane1b); transform: translateY(5px); }
+      100% { content: var(--crane1a); transform: translateY(-5px); }
+    }
 
     .craneflipped {
       width: 10%;
       animation: flap-flipped 1s infinite alternate;
     }
 
-    /* @keyframes flap-flipped {
-      0% { content: url('/images/crane1b.png'); transform: translateY(5px) scaleX(-1); }
-      50% { content: url('/images/crane1a.png'); transform: translateY(-5px) scaleX(-1); }
-      75% { content: url('/images/crane1b.png'); transform: translateY(5px) scaleX(-1); }
-      100% { content: url('/images/crane1a.png'); transform: translateY(-5px) scaleX(-1); }
-    } */
+    @keyframes flap-flipped {
+      0% { content: var(--crane1b); transform: translateY(5px) scaleX(-1); }
+      50% { content: var(--crane1a); transform: translateY(-5px) scaleX(-1); }
+      75% { content: var(--crane1b); transform: translateY(5px) scaleX(-1); }
+      100% { content: var(--crane1a); transform: translateY(-5px) scaleX(-1); }
+    }
 
     .crane:hover, .craneflipped:hover {
       transition: transform 0.1s ease-out, left 0.1s ease-out, top 0.1s ease-out; /* Smoothly move away */
@@ -726,7 +725,58 @@ import Laptop from "../assets/laptop.svg";
         <p style = "font-size:0.7rem; font-family: sans-serif;"> &copy; 2025 Youthacks. Registering for UK charity status. Fiscally sponsored by Hack Club, 
         a 501(c)(3) nonprofit (EIN: 81-2908499)</p>
       </div>
+      <script>
+        const whiteSection = document.querySelector('.white-section');
+        const header = document.querySelector('header');
       
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.intersectionRatio > 0.1) {
+              header.classList.add('hide-gradient');
+            } else {
+              header.classList.remove('hide-gradient');
+            }
+          });
+        }, {
+          threshold: 0.1
+        });
+      
+        observer.observe(whiteSection);
+      </script>
+      <script>
+        const cranes = document.querySelectorAll('.crane, .craneflipped');
+      
+        cranes.forEach(crane => {
+          crane.addEventListener('mouseenter', (e) => {
+            // Get the position of the crane
+            const craneRect = crane.getBoundingClientRect();
+            const craneCenterX = craneRect.left + craneRect.width / 2;
+            const craneCenterY = craneRect.top + craneRect.height / 2;
+            
+            // Get mouse cursor position
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            
+            // Calculate the direction away from the cursor
+            const deltaX = mouseX - craneCenterX;
+            const deltaY = mouseY - craneCenterY;
+            
+            // Calculate a random angle and distance for movement (smaller range)
+            const randomAngle = Math.random() * 2 * Math.PI; // Random angle in radians
+            const randomDistance = Math.random() * 150 + 70; // Random distance between 30px to 80px
+      
+            // Calculate new position based on the random angle
+            const newX = craneCenterX + Math.cos(randomAngle) * randomDistance;
+            const newY = craneCenterY + Math.sin(randomAngle) * randomDistance;
+      
+            // Apply new position and set transition
+            crane.style.position = 'absolute'; // Make sure the position is absolute
+            crane.style.left = `${newX - craneRect.width / 2}px`;
+            crane.style.top = `${newY - craneRect.height / 2}px`;
+            crane.style.transition = 'transform 0.6s ease-out, left 0.6s ease-out, top 0.6s ease-out';
+          });
+        });
+      </script>
     </div>
     <script>
       window.addEventListener('load', () => {
