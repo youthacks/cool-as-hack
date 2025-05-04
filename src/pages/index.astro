@@ -1,27 +1,99 @@
 ---
+import { Image } from "astro:assets";
+import Loading from "../components/loading.jsx";
+
 import Card1 from "../components/UI_components/card1.astro";
 import Card2 from "../components/UI_components/card2.astro";
 import Card3 from "../components/UI_components/card3.astro";
 import Grid1 from "../components/UI_components/grid1.astro";
 import Footercolumn from "../components/UI_components/footer.astro";
+
+// Import images from ../assets
+import youthacksLogo from "../assets/youthacks-logo.svg";
+import mainLogo from "../assets/logo.svg";
+// import crane from "../assets/crane.png";
+import crane1a from "../assets/crane1a.png";
+import crane1b from "../assets/crane1b.png";
+import crane2 from "../assets/crane2.png";
+import crane3 from "../assets/crane3.png";
+import crane4 from "../assets/crane4.png";
+import crane5 from "../assets/crane5.png";
+import crane6 from "../assets/crane6.png";
+import gear from "../assets/gear.png";
+import aromi from "../assets/aromi.png";
+import githubLogo from "../assets/github-logo.png";
+import nandos from "../assets/nandos.png";
+import rpiLogo from "../assets/raspberrypi-logo.png";
+import rpiLogoWhite from "../assets/raspberrypi-logo_white.svg";
+import learnAnything from "../assets/learnanything.svg";
+import yubico from "../assets/yubico.svg";
+import headerBg from "../assets/header_bg.jpg";
+import Laptop from "../assets/laptop.svg";
 ---
+<html>
 <head>
   <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Poetsen+One&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <title>Cool As Hack</title>
-  <style>
+  <style
+  define:vars={{
+    bg: `url("${headerBg.src}")`, 
+    crane1a: `url("${crane1a}")`,
+    crane1b: `url("${crane1b}")` 
+  }}>
+  body.loading {
+  overflow: hidden;
+}
+  .loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        font-family: sans-serif;
+        transition: opacity 0.3s ease;
+      }
+
+      .loading-screen.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .spinner {
+        width: 50px;
+        height: 50px;
+        border: 6px solid #ccc;
+        border-top: 6px solid #333;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-bottom: 1rem;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
     html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
+      margin: 0; !important;  
+      padding: 0; !important;
+      width: 100%; !important;
+      height: 100%; 
       background-color: white;
       color: white;
+      /* overflow-x: hidden; 
+	    overflow-y: auto; */
       font-family: "Bungee", sans-serif;
     }
 
-    .img {
+    .Image{
       user-drag: none;
       -webkit-user-drag: none;
       user-select: none;
@@ -38,7 +110,7 @@ import Footercolumn from "../components/UI_components/footer.astro";
     }
 
     header {
-      background-image: url('/images/header_bg.png');
+      background-image: var(--bg);
       background-size: cover;
       background-position: center;
       height: 100vh;
@@ -61,6 +133,7 @@ import Footercolumn from "../components/UI_components/footer.astro";
       -moz-user-select: none;
       -webkit-user-select: none;
       -ms-user-select: none;
+      height: auto;
     }
 
     .crane {
@@ -69,24 +142,24 @@ import Footercolumn from "../components/UI_components/footer.astro";
       
     }
 
-    @keyframes flap {
+    /* @keyframes flap {
       0% { content: url('/images/crane1b.png'); transform: translateY(5px); }
       50% { content: url('/images/crane1a.png'); transform: translateY(-5px); }
       75% { content: url('/images/crane1b.png'); transform: translateY(5px); }
       100% { content: url('/images/crane1a.png'); transform: translateY(-5px); }
-    }
+    } */
 
     .craneflipped {
       width: 10%;
       animation: flap-flipped 1s infinite alternate;
     }
 
-    @keyframes flap-flipped {
+    /* @keyframes flap-flipped {
       0% { content: url('/images/crane1b.png'); transform: translateY(5px) scaleX(-1); }
       50% { content: url('/images/crane1a.png'); transform: translateY(-5px) scaleX(-1); }
       75% { content: url('/images/crane1b.png'); transform: translateY(5px) scaleX(-1); }
       100% { content: url('/images/crane1a.png'); transform: translateY(-5px) scaleX(-1); }
-    }
+    } */
 
     .crane:hover, .craneflipped:hover {
       transition: transform 0.1s ease-out, left 0.1s ease-out, top 0.1s ease-out; /* Smoothly move away */
@@ -96,7 +169,7 @@ import Footercolumn from "../components/UI_components/footer.astro";
     .logo {
       max-width: 800px;
       min-width: 150px;
-      width: 100%;
+      width: 80%;
       height: auto;
       filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.5));
       z-index: 10;
@@ -118,7 +191,6 @@ import Footercolumn from "../components/UI_components/footer.astro";
     .logo-small-top {
       position: absolute;
       top: 1rem;
-      left: 1rem;
       width: 15%;
       height: auto;
       z-index: 10;
@@ -129,18 +201,43 @@ import Footercolumn from "../components/UI_components/footer.astro";
       -webkit-user-select: none;
       -ms-user-select: none;
     }
+    .youthacks-logo {
+      left: 2rem;
+    }
+    .rpi-logo {
+      right: 2rem;
 
+    }
     .logo-small-top:hover {
       transform: scale(1.1);
     }
-
+    
     .white-section {
-      display: flex;
+      /* grid-template-columns: 1fr 1fr ; */
       align-items: center;
       padding: 4rem;
+      display:flex;
     }
+    @media only screen and (max-width: 900px) {
+        .white-section {
+          padding: 0rem;
+          align-items: center;
+          display: block;
+        }
+      }
 
-    
+    .laptop {
+      width:50%;
+      height:auto;
+      z-index:5;
+      margin-bottom:0px;
+      display:flex;
+    }
+    @media only screen and (max-width: 900px) {
+        .laptop {
+          width: 100%;
+        }
+      }
     
     .blue-section {
       display: flex;
@@ -150,8 +247,14 @@ import Footercolumn from "../components/UI_components/footer.astro";
       align-items: center;  
       
     }
+    @media only screen and (max-width: 900px) {
+        .blue-section {
+          display: block;
+          padding: 1rem;
+        }
+      }
 
-    .blue-section img{
+    .blue-section Image alt=""{
       margin-left:auto;
       margin-right:auto;
       width: 10rem;
@@ -164,7 +267,7 @@ import Footercolumn from "../components/UI_components/footer.astro";
       -ms-user-select: none;
     }
 
-    .white-section img {
+    .white-section Image alt="" {
       width: 100%;
       height: auto;
       margin-right: 7rem;
@@ -177,38 +280,51 @@ import Footercolumn from "../components/UI_components/footer.astro";
       color: #f40c54;
     }
 
-    
-
     .gear {
-      width: 5%;
+      /* width: 5%; */
       max-width: 5%;
       height: auto;
       position: absolute;
-      z-index: 4;
-      transition: transform 1s ease-in-out;
-      user-drag: none;
+      /* z-index: 4; */
+      /* transition: transform 1s ease-in-out; */
+      /* user-drag: none;
       -webkit-user-drag: none;
       user-select: none;
       -moz-user-select: none;
       -webkit-user-select: none;
-      -ms-user-select: none;
+      -ms-user-select: none; */
     }
 
     .gear:hover{
       transform:scale(1.2) rotate(360deg);
     }
-
     .laptop-crane{
       position:absolute;
       width:10%; 
       height:auto; 
       position:absolute; 
       z-index:0;
-      
-
     }
+    @media only screen and (max-width: 900px) {
+        .laptop-crane {
+          width: 20%;
+        }
+      }
+    .footer {
+      display:flex;
+       justify-content: center;
+        align-items: center;
+    }
+    @media only screen and (max-width: 900px) {
+        .footer {
+          display: block;
+        }
+      }
     
     .laptop-crane img {
+      max-width: 100%;
+      height: auto;
+      overflow: hidden;
       animation: crane-moving 2s infinite alternate ease-in-out;
       user-drag: none;
       -webkit-user-drag: none;
@@ -227,7 +343,7 @@ import Footercolumn from "../components/UI_components/footer.astro";
     .magenta-section {
       display: flex;
       align-items: center;
-      padding: 4rem;
+      padding: 2rem;
       background-color:#f10e52;
     }
 
@@ -273,247 +389,219 @@ import Footercolumn from "../components/UI_components/footer.astro";
       text-align: center;
     }
 
-    /* target every <img> inside a Card1 container in the sponsor section */
-    .sponsor-section .container img {
+    /* target every <Image alt=""> inside a Card1 container in the sponsor section */
+    .sponsor-section .container Image {
       width: clamp(80px, 10vw, 150px) !important;
       height: auto;
     }
 
+    .fixed-bottom-button {
+      border-radius: 1rem 1rem 1rem 1rem;
+      font-family: "Bungee", sans-serif;
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    font-size: 2rem;
+    transform: translate(-50%, -50%);
+    width: 30%;
+    padding: 1rem;
+    background: transparent;
+    color: white;
+    text-align: center;
+    z-index: 10000; /* on top of loading screen */
+    border: none;
+    border: 3px solid #6255bb;
+    border-color: #6255bb;
+  }
 
+  .fixed-bottom-button:hover {
+    background:#6255bb; 
+    cursor: pointer;
+  }
   </style>
 </head>
-<body>
-  <div class="container">
+<body class="loading">
+  <div id="loading" class="loading-screen">
+    <div class="spinner"></div>
+    <div>Loading...</div>
+  </div>
+  <button class="fixed-bottom-button" onclick="window.location.href='https://youthacks.fillout.com/sign-up';">
+    Sign Up
+  </button>
+  <main class="container">
+    <!-- <div class="gears" style="position: absolute; overflow: hidden; z-index: 0;">
+      <Image alt="" src={gear} class="gear" style="top: 20rem; left: 5rem;" style="z-index:10"/>
+    <Image alt="" src={gear} class="gear" style="top: 40rem; right: 5rem;" style="z-index:10"/>
+    <Image alt="" src={gear} class="gear" style="top: 115rem; right: -10rem" style="z-index:10"/>
+    <Image alt="" src={gear} class="gear" style="top: 6rem; right: 40rem;"style="z-index:10" />
+    <Image alt="" src={gear} class="gear" style="top: 80rem; right: 22rem;"style="z-index:10" />
+    <Image alt="" src={gear} class="gear" style="top: 65rem; left: 30rem  ;"style="z-index:10" />
+    </div> -->
     <header>
       <a href="https://youthacks.org" target="_blank">
-        <img src="/images/youthacks-logo.svg" alt="Youthacks Logo" class="logo-small-top" />
+        <Image alt="" src={youthacksLogo} alt="Youthacks Logo" class="logo-small-top youthacks-logo" />
       </a>
-      <a href="https://www.raspberrypi.com/" target="_blank">
-        <img src="/images/rpi_small.png" alt="Raspberry Pi Logo" class="logo-small-top" style = "top: 4rem;"/>
+      <a href="https://www.raspberrypi.org" target="_blank">
+        <Image alt="" src={rpiLogoWhite} alt="Raspberry Pi Logo" class="logo-small-top rpi-logo"/>
       </a>
       <div class="tilt-logo" data-tilt data-tilt-max="15" data-tilt-speed="400">
-        <img src="/images/logo.svg" alt="Logo" class="logo" />
+        <Image alt="" src={mainLogo} alt="Logo" class="logo" />
       </div>
 
-            
-      <img src="/images/crane1a.png" alt="Paper Crane" class="craneflipped" style="top: 50%; left: 5%;">
-      <img src="/images/crane1a.png" alt="Paper Crane" class="craneflipped" style="top: 5%; left: 70%;">
-      <img src="/images/crane1a.png" alt="Paper Crane" class="crane" style="top: 20%; right: 10%;">
-      <img src="/images/crane1a.png" alt="Paper Crane" class="crane" style="top: 40%; left: 15%;">
+      <Image src={crane1a} alt="Crane" class="craneflipped" style="top: 50%; left: 5%;" />
+      <Image src={crane1a} alt="Crane" class="craneflipped" style="top: 5%; left: 70%;" />
+      <Image src={crane1a} alt="Crane" class="crane" style="top: 20%; right: 10%;" />
+      <Image src={crane1a} alt="Crane" class="crane" style="top: 40%; left: 15%;" />
       
       <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js"></script>
+
     </header>
 
     <div class="white-section">
-      <img src="/images/laptop.png" style="width:50%; height:auto; z-index:5; margin-bottom:0px;"/>
-      <div class = "laptop-crane" style="top:115%; left:30%;">
-        <img src="/images/crane1a.png" >
-      </div>
-      <div class = "laptop-crane" style="top:120%; left:20%; width:5%; transform: rotate(45deg);">
-        <img src="/images/crane1b.png" >
-      </div>
-      <div class = "laptop-crane" style="top:130%; left:30%; width:2%; transform: rotate(-20deg); z-index:20;">
-        <img src="/images/crane1b.png" >
-      </div>
-      <div class = "laptop-crane" style="top:110%; left:30%; width:5%; transform: rotate(-10deg); z-index:20;">
-        <img src="/images/crane2.png" >
-      </div>
-      <div class = "laptop-crane" style="top:137%; left:20%; width:6%; transform: rotate(30deg) scaleX(-1); z-index:20;">
-        <img src="/images/crane2.png" >
-      </div>
-      <div class = "laptop-crane" style="top:107%; left:22%; width:6%; transform: rotate(30deg) scaleX(-1); z-index:20;">
-        <img src="/images/crane3.png" >
-      </div>
-      <div class = "laptop-crane" style="top:110%; left:35%; width:5%; transform: rotate(5deg); z-index:20;">
-        <img src="/images/crane4.png" >
-      </div>
-      <div class = "laptop-crane" style="top:107%; left:12%; width:6%; transform: rotate(0deg); z-index:20;">
-        <img src="/images/crane5.png" >
-      </div>
-      <div class = "laptop-crane" style="top:130%; left:15%; width:4%; transform: rotate(-20deg); z-index:20;">
-        <img src="/images/crane6.png" >
-      </div>
-      <div class = "laptop-crane" style="top:130%; left:35%; width:6%; transform: rotate(10deg); z-index:20;">
-        <img src="/images/crane2.png" >
-      </div>
-      <div class = "laptop-crane" style="top:132%; left:28%; width:4%; transform: rotate(-10deg) scaleX(-1); z-index:20;">
-        <img src="/images/crane1b.png" >
-      </div>
-      <div class = "laptop-crane" style="top:108%; left:16%; width:5%; transform: rotate(-10deg) scaleX(-1); z-index:20;">
-        <img src="/images/crane6.png" >
-      </div>
-      <div class = "laptop-crane" style="top:110%; left:5%; width:4%; transform: rotate(-30deg) scaleX(-1); z-index:20;">
-        <img src="/images/crane3.png" >
-      </div>
-      <div class = "laptop-crane" style="top:130%; left:43%; width:8%; transform: rotate(-30deg); z-index:20;">
-        <img src="/images/crane6.png" >
-      </div>
-      <div class="laptop-crane" style="top:125%; left:10%; width:6%; transform: rotate(15deg); z-index:10;">
-        <img src="/images/crane1a.png">
-      </div>
-      <div class="laptop-crane" style="top:112%; left:40%; width:4%; transform: rotate(-25deg); z-index:15;">
-        <img src="/images/crane1b.png">
-      </div>
-      <div class="laptop-crane" style="top:140%; left:18%; width:5%; transform: rotate(30deg) scaleX(-1); z-index:5;">
-        <img src="/images/crane2.png">
-      </div>
-      <div class="laptop-crane" style="top:135%; left:22%; width:3%; transform: rotate(-45deg); z-index:25;">
-        <img src="/images/crane3.png">
-      </div>
-      <div class="laptop-crane" style="top:117%; left:38%; width:7%; transform: rotate(5deg); z-index:12;">
-        <img src="/images/crane4.png">
-      </div>
-      <div class="laptop-crane" style="top:133%; left:8%; width:4%; transform: rotate(-10deg); z-index:18;">
-        <img src="/images/crane5.png">
-      </div>
-      <div class="laptop-crane" style="top:115%; left:26%; width:6%; transform: rotate(60deg); z-index:14;">
-        <img src="/images/crane6.png">
-      </div>
-      <div class="laptop-crane" style="top:120%; left:45%; width:5%; transform: rotate(-15deg) scaleX(-1); z-index:20;">
-        <img src="/images/crane1a.png">
-      </div>
-      <div class="laptop-crane" style="top:137%; left:38%; width:4%; transform: rotate(10deg); z-index:9;">
-        <img src="/images/crane2.png">
-      </div>
-      <div class="laptop-crane" style="top:142%; left:12%; width:6%; transform: rotate(-35deg); z-index:22;">
-        <img src="/images/crane5.png">
-      </div>
-      <div class="laptop-crane" style="top:125%; left:32%; width:7%; transform: rotate(20deg) scaleX(-1); z-index:17;">
-        <img src="/images/crane3.png">
-      </div>
-      <div class="laptop-crane" style="top:110%; left:48%; width:5%; transform: rotate(-10deg); z-index:11;">
-        <img src="/images/crane4.png">
-      </div>
-      <div class="laptop-crane" style="top:135%; left:26%; width:3%; transform: rotate(45deg); z-index:13;">
-        <img src="/images/crane6.png">
-      </div>
-      <div class="laptop-crane" style="top:120%; left:18%; width:6%; transform: rotate(5deg); z-index:19;">
-        <img src="/images/crane1b.png">
-      </div>
-      <div class="laptop-crane" style="top:110%; left:28%; width:6%; transform: rotate(10deg); z-index:-10;">
-        <img src="/images/crane1a.png">
-      </div>
-      <div class="laptop-crane" style="top:112%; left:32%; width:4%; transform: rotate(-20deg); z-index:-10;">
-        <img src="/images/crane3.png">
-      </div>
-      <div class="laptop-crane" style="top:108%; left:30%; width:5%; transform: rotate(5deg) scaleX(-1); z-index:-10;">
-        <img src="/images/crane2.png">
-      </div>
-      <div class="laptop-crane" style="top:115%; left:26%; width:3%; transform: rotate(15deg); z-index:-10;">
-        <img src="/images/crane6.png">
-      </div>
-      <div class="laptop-crane" style="top:118%; left:33%; width:7%; transform: rotate(-30deg); z-index:-10;">
-        <img src="/images/crane4.png">
-      </div>
-      <div class="laptop-crane" style="top:109%; left:25%; width:6%; transform: rotate(20deg); z-index:-10;">
-        <img src="/images/crane1b.png">
-      </div>
-      <div class="laptop-crane" style="top:122%; left:29%; width:5%; transform: rotate(-15deg); z-index:-10;">
-        <img src="/images/crane5.png">
-      </div>
-      <div class="laptop-crane" style="top:113%; left:27%; width:4%; transform: rotate(35deg); z-index:-10;">
-        <img src="/images/crane3.png">
-      </div>
-      <div class="laptop-crane" style="top:116%; left:34%; width:6%; transform: rotate(-10deg); z-index:-10;">
-        <img src="/images/crane2.png">
-      </div>
-      <div class="laptop-crane" style="top:106%; left:30%; width:3%; transform: rotate(25deg); z-index:-10;">
-        <img src="/images/crane6.png">
-      </div>
-      <div class="laptop-crane" style="top:128%; left:26%; width:6%; transform: rotate(15deg); z-index:-10;">
-        <img src="/images/crane1a.png">
-      </div>
-      <div class="laptop-crane" style="top:130%; left:33%; width:5%; transform: rotate(-10deg); z-index:-10;">
-        <img src="/images/crane4.png">
-      </div>
-      <div class="laptop-crane" style="top:132%; left:29%; width:4%; transform: rotate(20deg); z-index:-10;">
-        <img src="/images/crane2.png">
-      </div>
-      <div class="laptop-crane" style="top:135%; left:27%; width:7%; transform: rotate(-25deg); z-index:-10;">
-        <img src="/images/crane6.png">
-      </div>
-      <div class="laptop-crane" style="top:137%; left:31%; width:3.5%; transform: rotate(30deg); z-index:-10;">
-        <img src="/images/crane1b.png">
-      </div>
-      <div class="laptop-crane" style="top:140%; left:34%; width:6%; transform: rotate(-15deg); z-index:-10;">
-        <img src="/images/crane5.png">
-      </div>
-      <div class="laptop-crane" style="top:125%; left:28%; width:4.5%; transform: rotate(5deg); z-index:-10;">
-        <img src="/images/crane3.png">
-      </div>
-      <div class="laptop-crane" style="top:133%; left:25%; width:5.5%; transform: rotate(12deg) scaleX(-1); z-index:-10;">
-        <img src="/images/crane2.png">
-      </div>
-      <div class="laptop-crane" style="top:118%; left:10%; width:5%; transform: rotate(-10deg); z-index:-10;">
-        <img src="/images/crane1a.png">
-      </div>
-      <div class="laptop-crane" style="top:120%; left:7%; width:4%; transform: rotate(15deg); z-index:-10;">
-        <img src="/images/crane2.png">
-      </div>
-      <div class="laptop-crane" style="top:125%; left:5%; width:6%; transform: rotate(-5deg) scaleX(-1); z-index:-10;">
-        <img src="/images/crane3.png">
-      </div>
-      <div class="laptop-crane" style="top:130%; left:12%; width:5.5%; transform: rotate(25deg); z-index:-10;">
-        <img src="/images/crane5.png">
-      </div>
-      <div class="laptop-crane" style="top:127%; left:15%; width:4.5%; transform: rotate(-20deg); z-index:-10;">
-        <img src="/images/crane4.png">
-      </div>
-      <div class="laptop-crane" style="top:133%; left:18%; width:5%; transform: rotate(10deg); z-index:-10;">
-        <img src="/images/crane6.png">
-      </div>
-      <div class="laptop-crane" style="top:115%; left:9%; width:6%; transform: rotate(-30deg); z-index:-10;">
-        <img src="/images/crane1b.png">
-      </div>
-      <div class="laptop-crane" style="top:112%; left:18%; width:4.5%; transform: rotate(10deg); z-index:-10;">
-        <img src="/images/crane3.png">
-      </div>
-      <div class="laptop-crane" style="top:116%; left:22%; width:4.5%; transform: rotate(-25deg); z-index:20;">
-        <img src="/images/crane5.png">
-      </div>
-      <div class="laptop-crane" style="top:120%; left:20%; width:5%; transform: rotate(15deg); z-index:-10;">
-        <img src="/images/crane4.png">
-      </div>
-      <div class="laptop-crane" style="top:124%; left:23%; width:6%; transform: rotate(5deg); z-index:20;">
-        <img src="/images/crane6.png">
-      </div>
-      <div class="laptop-crane" style="top:118%; left:16%; width:5.5%; transform: rotate(-10deg) scaleX(-1); z-index:-10;">
-        <img src="/images/crane2.png">
-      </div>
-      <div class="laptop-crane" style="top:122%; left:19%; width:4%; transform: rotate(30deg); z-index:20;">
-        <img src="/images/crane1a.png">
-      </div>
-      <div class="laptop-crane" style="top:125%; left:15%; width:4.8%; transform: rotate(-15deg); z-index:-10;">
-        <img src="/images/crane1b.png">
-      </div>
-
-
-
-
-
+      <Image alt="" src={Laptop} class="laptop"/>
+      <div class="laptop-crane" style="top:115%; left:30%;">
+        <Image alt="C" src={crane1a} />
+    </div>
+    <div class="laptop-crane" style="top:120%; left:20%; width:5%; transform: rotate(45deg);">
+        <Image alt="C" src={crane1b} />
+    </div>
+    <div class="laptop-crane" style="top:130%; left:30%; width:2%; transform: rotate(-20deg); z-index:20;">
+        <Image alt="C" src={crane1b} />
+    </div>
+    <div class="laptop-crane" style="top:110%; left:30%; width:5%; transform: rotate(-10deg); z-index:20;">
+        <Image alt="C" src={crane2} />
+    </div>
+    
+    <div class="laptop-crane" style="top:137%; left:20%; width:6%; transform: rotate(30deg) scaleX(-1);">
+        <Image alt="C" src={crane2} />
+    </div>
+    <div class="laptop-crane" style="top:107%; left:22%; width:6%; transform: rotate(30deg) scaleX(-1);">
+        <Image alt="C" src={crane3} />
+    </div>
+    <div class="laptop-crane" style="top:110%; left:35%; width:5%; transform: rotate(5deg); z-index:20;">
+        <Image alt="C" src={crane4} />
+    </div>
+    <div class="laptop-crane" style="top:107%; left:12%; width:6%; transform: rotate(0deg); z-index:20;">
+        <Image alt="C" src={crane5} />
+    </div>
+    <div class="laptop-crane" style="top:130%; left:15%; width:4%; transform: rotate(-20deg); z-index:20;">
+        <Image alt="C" src={crane6} />
+    </div>
+    <div class="laptop-crane" style="top:130%; left:35%; width:6%; transform: rotate(10deg); z-index:20;">
+        <Image alt="C" src={crane2} />
+    </div>
+    <div class="laptop-crane" style="top:132%; left:28%; width:4%; transform: rotate(-10deg) scaleX(-1); z-index:20;">
+        <Image alt="C" src={crane1b} />
+    </div>
+    <div class="laptop-crane" style="top:108%; left:16%; width:5%; transform: rotate(-10deg) scaleX(-1); z-index:20;">
+        <Image alt="C" src={crane6} />
+    </div>
+    <div class="laptop-crane" style="top:110%; left:5%; width:4%; transform: rotate(-30deg) scaleX(-1); z-index:20;">
+        <Image alt="C" src={crane3} />
+    </div>
+    
+    <div class="laptop-crane" style="top:130%; left:43%; width:8%; transform: rotate(-30deg); z-index:20;">
+        <Image alt="C" src={crane6} />
+    </div>
+    <div class="laptop-crane" style="top:125%; left:10%; width:6%; transform: rotate(15deg); z-index:10;">
+        <Image alt="C" src={crane1a} />
+    </div>
+    <div class="laptop-crane" style="top:112%; left:40%; width:4%; transform: rotate(-25deg); z-index:15;">
+        <Image alt="C" src={crane1b} />
+    </div>
+    <div class="laptop-crane" style="top:140%; left:18%; width:5%; transform: rotate(30deg) scaleX(-1); z-index:5;">
+        <Image alt="C" src={crane2} />
+    </div>
+    <div class="laptop-crane" style="top:135%; left:22%; width:3%; transform: rotate(-45deg); z-index:25;">
+        <Image alt="C" src={crane3} />
+    </div>
+    <div class="laptop-crane" style="top:117%; left:38%; width:7%; transform: rotate(5deg); z-index:12;">
+        <Image alt="C" src={crane4} />
+    </div>
+    <div class="laptop-crane" style="top:133%; left:8%; width:4%; transform: rotate(-10deg); z-index:18;">
+        <Image alt="C" src={crane5} />
+    </div>
+    <div class="laptop-crane" style="top:115%; left:26%; width:6%; transform: rotate(60deg); z-index:14;">
+        <Image alt="C" src={crane6} />
+    </div>
+    <div class="laptop-crane" style="top:120%; left:45%; width:5%; transform: rotate(-15deg) scaleX(-1); z-index:20;">
+        <Image alt="C" src={crane1a} />
+    </div>
+    <div class="laptop-crane" style="top:137%; left:38%; width:4%; transform: rotate(10deg); z-index:9;">
+        <Image alt="C" src={crane2} />
+    </div>
+    <div class="laptop-crane" style="top:142%; left:12%; width:6%; transform: rotate(-35deg); z-index:22;">
+        <Image alt="C" src={crane5} />
+    </div>
+    <div class="laptop-crane" style="top:125%; left:32%; width:7%; transform: rotate(20deg) scaleX(-1); z-index:17;">
+        <Image alt="C" src={crane3} />
+    </div>
+    <div class="laptop-crane" style="top:110%; left:48%; width:5%; transform: rotate(-10deg); z-index:11;">
+        <Image alt="C" src={crane4} />
+    </div>
+     <div class="laptop-crane" style="top:135%; left:26%; width:3%; transform: rotate(45deg); z-index:13;">
+        <Image alt="C" src={crane6} />
+    </div>
+    <div class="laptop-crane" style="top:120%; left:18%; width:6%; transform: rotate(5deg); z-index:19;">
+        <Image alt="C" src={crane1b} />
+    </div>
+    <div class="laptop-crane" style="top:110%; left:28%; width:6%; transform: rotate(10deg); z-index:-10;">
+        <Image alt="C" src={crane1a} />
+    </div>
+    <div class="laptop-crane" style="top:112%; left:32%; width:4%; transform: rotate(-20deg); z-index:-10;">
+        <Image alt="C" src={crane3} />
+    </div>
+    <div class="laptop-crane" style="top:108%; left:30%; width:5%; transform: rotate(5deg) scaleX(-1); z-index:-10;">
+        <Image alt="C" src={crane2} />
+    </div>
+    <div class="laptop-crane" style="top:115%; left:26%; width:3%; transform: rotate(15deg); z-index:-10;">
+        <Image alt="C" src={crane6} />
+    </div>
+    <div class="laptop-crane" style="top:118%; left:33%; width:7%; transform: rotate(-30deg); z-index:-10;">
+        <Image alt="C" src={crane4} />
+    </div>
+    <div class="laptop-crane" style="top:109%; left:25%; width:6%; transform: rotate(20deg); z-index:-10;">
+        <Image alt="C" src={crane1b} />
+    </div>
+    <div class="laptop-crane" style="top:122%; left:29%; width:5%; transform: rotate(-15deg); z-index:-10;">
+        <Image alt="C" src={crane5} />
+    </div>
+    <div class="laptop-crane" style="top:113%; left:27%; width:4%; transform: rotate(35deg); z-index:-10;">
+        <Image alt="C" src={crane3} />
+    </div>
+    <div class="laptop-crane" style="top:116%; left:34%; width:6%; transform: rotate(-10deg); z-index:-10;">
+        <Image alt="C" src={crane2} />
+    </div>
+    
       <Card1>
         <h1>What Is Cool As Hack?</h1>
         <p>Cool as hack is a <a href="https://en.wikipedia.org/wiki/Hackathon">Hackathon</a>
-        for Secondary school students. Held right here in Cambridge,
+        for Secondary school students, in partnership with <a href="https://raspberrypi.org">the Raspberry Pi Foundation</a>. Held right here in Cambridge,
         Cool as hack is a hackathon where
         you get to work on the coolest projects you can,
-        and then show them to the world in
-        <a href="https://www.raspberrypi.com/">Raspberry Pi's</a>
-        global competition, <a href="https://online.coolestprojects.org/">Coolest projects</a></p>
+        and then show them to the world in Raspberry Pi's
+        global competition, <a href="https://online.coolestprojects.org/">Coolest projects</a>.</p>
       </Card1>
-      <img src="/images/gear.png" class="gear" style="top: 20%; left: 5%;">
+      <Image alt="G" src={gear} class="gear" style="top: 20%; left: 5%;" />
+      <Image alt="G"src={gear} class="gear" style="top: 40%; right: 5%;" />
+      <Image alt="G"src={gear} class="gear" style="top: 115%; right: 5%;" />
+      <Image alt="G"src={gear} class="gear" style="top: 6%; right: 40%;" />
+      <Image alt="G"src={gear} class="gear"style="top: 80%; right: 22%;" />
+      <Image alt="G"src={gear} class="gear" style="top: 65%; left: 30%;" / >
+        <!-- <img src="/images/gear.png" class="gear" style="top: 20%; left: 5%;">
       <img src="/images/gear.png" class="gear" style="top: 40%; right: 5%;">
-      <img src="/images/gear.png" class="gear" style="top: 115%; right: -2em;">
+      <img src="/images/gear.png" class="gear" style="top: 115%; right: 5%;">
       <img src="/images/gear.png" class="gear" style="top: 6%; right: 40%;">
       <img src="/images/gear.png" class="gear" style="top: 80%; right: 22%;">
-      <img src="/images/gear.png" class="gear" style="top: 65%; left: 30%;">
+      <img src="/images/gear.png" class="gear" style="top: 65%; left: 30%;"> -->
+      
     </div>
     <div class = "blue-section" style = "padding-bottom:0rem;">
       <Card2>
         <h1>Is this all free?</h1>
-        <p>Yes, all of it is free! Food, drinks, snacks and swag are all provided. 
-          All you need to bring is a laptop to code on, a charger and if you'd like, a cool project to work on!
-          Allergens and Dietary requirements will be taken into consideration but may not be catered for. 
+        <p>Yes, all of it is free! Food, drinks, snacks, and swag are all provided. 
+          All you need to bring is a laptop to code on, a charger and a cool project (or idea)!
+          We will try to accomodate any Allergens and Dietary requirements - just let us know.
         </p>
       </Card2>
       <Card2>
@@ -533,155 +621,110 @@ import Footercolumn from "../components/UI_components/footer.astro";
         <p>We'll be releasing a parent's guide soon, but if your
           parents do have any queries they can 
           <a href="https://youthacks.org/contact-us">reach out to us</a>. 
-          All of our events are Adult supervised, and our Adult volunteers have 
+          All of our events are Adult supervised, and our Raspberry Pi Staff have 
           safeguarding training and are DBS checked. For more info, they can also check out 
-          raspberry Pi's <a href="https://www.raspberrypi.org/safeguarding">safeguarding page</a>. 
+          Raspberry Pi's <a href="https://www.raspberrypi.org/safeguarding">safeguarding page</a>.
+          Contact <a href="mailto:helen.gardner@raspberrypi.org">Helen</a> for safeguarding concerns.
         </p>
       </Card2>
       <Card2>
         <h1>Who can attend?</h1>
-        <p>Cool as Hack is open to all secondary students, no matter their skill level!
-          Even if you're not experienced in coding, you can still participate. We need people
-          that are good at art, that are good at making things, and that are good at collaborating.
-          Whatever your skill level, let's all learn and create together!
+        <p>Cool as Hack is open to all secondary students!
+          Even if you have limited experience in coding, you can still participate. We need people
+          who like making things, and collaborating with others.
+          Let's all learn and create together!
         </p>
       </Card2>
     </div>
-    <div class="magenta-section" style="padding: 0rem;">
+    <div class="magenta-section" >
       <h1 style="margin-left: auto; margin-right:auto; margin-top:4rem;"> 
         What's happening at Cool as Hack?
       </h1>
     </div>
-    <div class="magenta-section" style="padding:0rem;">
+    <div class="magenta-section" >
       <h2 style="text-align: center; margin-left: auto; margin-right:auto; margin-bottom:4rem;">
         Doors open & Registration - 8:45 
-        <br> Opening Ceremony - 9:00 <br>  
-        Form teams, start working on projects! - 9:45 <br>
-      Lunch - 12:00 <br>
-      Continue working on projects - 13:00
-      <br> Dinner - 17:00
-      <br> Project Demos - 18:30
-      <br> Closing Ceremony - 20:00
-      <br> Home! - 20:45</h2>
+        <br><br> Opening Ceremony - 9:00 <br><br>  
+        Form teams, start working on projects! - 9:45 <br><br>
+      Lunch - 12:00 <br><br>
+      AMAs with our guest speakers - 13:00
+      <br><br> Dinner - 17:00
+      <br><br> Project Submissions and Demos - 18:30
+      <br><br> Closing Ceremony - 20:00
+      <br><br> Home! - 20:45</h2>
       
     </div>
+   
+   
 
     <div class="white-section"> 
       <Grid1>  
         <Card3 slot="partner">
           <div class="wrapper">
-            <img src="images/raspberrypi-logo.png" alt="Raspberry Pi logo" />
+            <Image alt="" src={rpiLogo} alt="Raspberry Pi logo" style="object-fit: contain;"/>
           </div>
-          <p>Raspberry Pi</p>
         </Card3>
         <Card3>  
           <div class="wrapper">  
-            <img src="images/aromi.png" alt="Aromi logo" />  
+            <Image alt="" src={aromi} alt="Aromi logo" style="object-fit: contain;"/>  
           </div>  
-          <p>Aromi</p>  
         </Card3>  
     
         <Card3>  
           <div class="wrapper">  
-            <img src="images/github-logo.png" alt="GitHub logo"/>  
+            <Image alt="" src={githubLogo} alt="GitHub logo" style="object-fit: contain;"/>  
           </div>  
-          <p>GitHub</p>  
         </Card3>  
     
         <Card3>  
           <div class="wrapper">  
-            <img src="images/learnanything.png" alt="Learn Anything" />  
-          </div>  
-          <p>Learn Anything</p>  
+            <Image alt="" src={learnAnything} alt="Learn Anything" style="object-fit: contain;"/>  
+          </div>   
         </Card3>  
         <Card3>  
           <div class="wrapper">  
-            <img src="images/nandos.png" alt="Nando's" />  
-          </div>  
-          <p>Nando's</p>  
+            <Image alt="" src={nandos} alt="Nando's" style="object-fit: contain;"/>  
+          </div>    
+        </Card3> 
+        <Card3>  
+          <div class="wrapper">  
+            <Image alt="" src={yubico} alt="Yubico" style="object-fit: contain;"/>  
+          </div>    
         </Card3> 
       </Grid1>  
     </div>
     <div class="blue-section" style = "filter: drop-shadow(0 1rem 4rem rgba(98, 85, 187, 1));">
       <div class="content-wrapper">  
-        <img src="images/logo.svg" alt="Cool as Hack" />  
-        <div style = "display:flex; justify-content: center;
-        align-items: center; ">
+        <Image src={mainLogo} alt="Cool as Hack" style="max-width: 50%; height:auto"/>  
+        <div class="footer" >
           <Footercolumn>
             <a href = "https://youthacks.org">Youthacks</a>
           </Footercolumn>  
-          -
+          
           <Footercolumn>
             <a href = "https://youthacks.org/contact-us">Contact</a>
           </Footercolumn>
-          -
+          
           <Footercolumn>
             <a href = "https://youthacks.org/donate">Support Us</a>
           </Footercolumn>
-          -
+          
           <Footercolumn>
             <a href = "https://www.raspberrypi.org/safeguarding/">Safeguarding</a>
           </Footercolumn>
         </div>
-        <p style = "font-size:0.7rem; font-family: sans-serif;"> © 2025 Youthacks. Registering for UK charity status. Fiscally sponsored by Hack Club, 
+        <p style = "font-size:0.7rem; font-family: sans-serif;"> &copy; 2025 Youthacks. Registering for UK charity status. Fiscally sponsored by Hack Club, 
         a 501(c)(3) nonprofit (EIN: 81-2908499)</p>
       </div>
       
     </div>
-
-  <!-- <script>
-    const whiteSection = document.querySelector('.white-section');
-    const header = document.querySelector('header');
-  
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.intersectionRatio > 0.1) {
-          header.classList.add('hide-gradient');
-        } else {
-          header.classList.remove('hide-gradient');
-        }
+    <script>
+      window.addEventListener('load', () => {
+        const loadingScreen = document.getElementById('loading');
+        document.body.classList.remove('loading');
+        loadingScreen.classList.add('hidden');
+        setTimeout(() => loadingScreen.remove(), 300);
       });
-    }, {
-      threshold: 0.1
-    });
-  
-    observer.observe(whiteSection);
-  </script>
-  <script>
-    const cranes = document.querySelectorAll('.crane, .craneflipped');
-  
-    cranes.forEach(crane => {
-      crane.addEventListener('mouseenter', (e) => {
-        // Get the position of the crane
-        const craneRect = crane.getBoundingClientRect();
-        const craneCenterX = craneRect.left + craneRect.width / 2;
-        const craneCenterY = craneRect.top + craneRect.height / 2;
-        
-        // Get mouse cursor position
-        const mouseX = e.clientX;
-        const mouseY = e.clientY;
-        
-        // Calculate the direction away from the cursor
-        const deltaX = mouseX - craneCenterX;
-        const deltaY = mouseY - craneCenterY;
-        
-        // Calculate a random angle and distance for movement (smaller range)
-        const randomAngle = Math.random() * 2 * Math.PI; // Random angle in radians
-        const randomDistance = Math.random() * 150 + 70; // Random distance between 30px to 80px
-  
-        // Calculate new position based on the random angle
-        const newX = craneCenterX + Math.cos(randomAngle) * randomDistance;
-        const newY = craneCenterY + Math.sin(randomAngle) * randomDistance;
-  
-        // Apply new position and set transition
-        crane.style.position = 'absolute'; // Make sure the position is absolute
-        crane.style.left = `${newX - craneRect.width / 2}px`;
-        crane.style.top = `${newY - craneRect.height / 2}px`;
-        crane.style.transition = 'transform 0.6s ease-out, left 0.6s ease-out, top 0.6s ease-out';
-      });
-    });
-  </script> -->
-  
-  
+    </script>
 </body>
 
