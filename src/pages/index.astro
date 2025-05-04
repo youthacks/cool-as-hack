@@ -404,7 +404,7 @@ import Laptop from "../assets/laptop.svg";
       border-radius: 1rem 1rem 1rem 1rem;
       font-family: "Bungee", sans-serif;
     position: absolute;
-    bottom: 2.5%;
+    bottom: 1.5%;
     left: 50%;
     font-size: 2rem;
     transform: translate(-50%, -50%);
@@ -417,6 +417,11 @@ import Laptop from "../assets/laptop.svg";
     border: none;
     border: 3px solid #6255bb;
     border-color: #6255bb;
+  }
+  @media only screen and (max-width: 900px) {
+    .fixed-bottom-button {
+      width: 80%;
+    }
   }
 
   .fixed-bottom-button:hover {
