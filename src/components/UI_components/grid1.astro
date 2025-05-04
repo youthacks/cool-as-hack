@@ -1,13 +1,45 @@
 <html>
   <style>
-    
-
     .container {
       display: grid;
       grid-template-columns: 1fr 1fr;
       margin-top: 2em;
       justify-items: center;
       gap: 2rem;
+
+    }
+
+    .partner-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 3rem;
+    }
+
+    .partner-container :global(p) {
+      background: -webkit-linear-gradient(#8f8ab1, #f10e52);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-family: "Bungee", sans-serif;
+      font-weight: 600;
+      font-size: 2.5em; 
+      font-style: normal;
+    }
+
+    .partner-container :global(.wrapper) {
+      max-width: 250pxs; 
+    }
+
+    .partner-container :global(img) {
+      width: 100%;
+      height: auto;
+      user-drag: none;
+      -webkit-user-drag: none;
+      user-select: none;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
     }
 
     @media only screen and (max-width: 900px) {
@@ -29,13 +61,37 @@
 
   <div>
     <h1 style = "text-align: center ;
-    font-size: 4em;
+    font-size: 5em;
     background: -webkit-linear-gradient(#8f8ab1, #f10e52) ;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-family: 'Bungee', sans-serif;
     margin-top: 2rem;
-    margin-bottom: 1rem;">Thank you, sponsors!</h1>
+    margin-bottom: 1rem;">Thank you to...</h1>
+    
+    <h2 style = "text-align: center ;
+    font-size: 3em;
+    background: -webkit-linear-gradient(#8f8ab1, #f10e52) ;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Bungee', sans-serif;
+    margin-top: 2rem;
+    margin-bottom: 1rem;">Our Partners</h2>
+
+    <div class="partner-container">
+        
+        <slot name="partner" />
+    </div>
+
+    <h2 style = "text-align: center ;
+    font-size: 3em;
+    background: -webkit-linear-gradient(#8f8ab1, #f10e52) ;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Bungee', sans-serif;
+    margin-top: 2rem;
+    margin-bottom: 1rem;">Our Sponsors</h2>
+
     <div class="container">
       <slot />
     </div>
