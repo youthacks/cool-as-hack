@@ -3,7 +3,7 @@ import Card1 from "../components/UI_components/card1.astro";
 import Card2 from "../components/UI_components/card2.astro";
 import Card3 from "../components/UI_components/card3.astro";
 import Grid1 from "../components/UI_components/grid1.astro";
-import Footer from "../components/shared/footer.astro";
+import Footercolumn from "../components/UI_components/footer.astro";
 ---
 <head>
   <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Poetsen+One&display=swap" rel="stylesheet">
@@ -20,6 +20,16 @@ import Footer from "../components/shared/footer.astro";
       color: white;
       font-family: "Bungee", sans-serif;
     }
+
+    .img {
+      user-drag: none;
+      -webkit-user-drag: none;
+      user-select: none;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+    }
+
 
     .container {
       display: flex;
@@ -45,11 +55,18 @@ import Footer from "../components/shared/footer.astro";
       pointer-events: none;
       transition: transform 0.6s ease-out, left 0.6s ease-out, top 0.6s ease-out; /* Smooth transition */
       pointer-events: auto; /* Make sure the cranes can be interacted with */
+      user-drag: none;
+      -webkit-user-drag: none;
+      user-select: none;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
     }
 
     .crane {
       width: 6%;
       animation: flap 1s infinite alternate;
+      
     }
 
     @keyframes flap {
@@ -84,6 +101,12 @@ import Footer from "../components/shared/footer.astro";
       filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.5));
       z-index: 10;
       transition: transform 0.3s ease-in-out;
+      user-drag: none;
+      -webkit-user-drag: none;
+      user-select: none;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
     }
 
 
@@ -92,16 +115,22 @@ import Footer from "../components/shared/footer.astro";
     }
 
     
-    .youthacks-logo {
+    .logo-small-top {
       position: absolute;
       top: 1rem;
       left: 1rem;
       width: 15%;
       height: auto;
       z-index: 10;
+      user-drag: none;
+      -webkit-user-drag: none;
+      user-select: none;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
     }
 
-    .youthacks-logo:hover {
+    .logo-small-top:hover {
       transform: scale(1.1);
     }
 
@@ -115,9 +144,24 @@ import Footer from "../components/shared/footer.astro";
     
     .blue-section {
       display: flex;
-      align-items: center;
       padding: 4rem;
       background-color:#6255bb;
+      justify-content: center; /* horizontal center */  
+      align-items: center;  
+      
+    }
+
+    .blue-section img{
+      margin-left:auto;
+      margin-right:auto;
+      width: 10rem;
+      height: auto;
+      user-drag: none;
+      -webkit-user-drag: none;
+      user-select: none;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
     }
 
     .white-section img {
@@ -142,6 +186,12 @@ import Footer from "../components/shared/footer.astro";
       position: absolute;
       z-index: 4;
       transition: transform 1s ease-in-out;
+      user-drag: none;
+      -webkit-user-drag: none;
+      user-select: none;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
     }
 
     .gear:hover{
@@ -154,11 +204,18 @@ import Footer from "../components/shared/footer.astro";
       height:auto; 
       position:absolute; 
       z-index:0;
+      
 
     }
     
     .laptop-crane img {
       animation: crane-moving 2s infinite alternate ease-in-out;
+      user-drag: none;
+      -webkit-user-drag: none;
+      user-select: none;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
     }
 
     @keyframes crane-moving{
@@ -173,6 +230,12 @@ import Footer from "../components/shared/footer.astro";
       padding: 4rem;
       background-color:#f10e52;
     }
+
+    .content-wrapper {  
+      display: flex;  
+      flex-direction: column; 
+      align-items: center; 
+    }  
 
     header::after {
       content: "";
@@ -223,13 +286,16 @@ import Footer from "../components/shared/footer.astro";
   <div class="container">
     <header>
       <a href="https://youthacks.org" target="_blank">
-        <img src="/images/youthacks-logo.svg" alt="Youthacks Logo" class="youthacks-logo" />
+        <img src="/images/youthacks-logo.svg" alt="Youthacks Logo" class="logo-small-top" />
+      </a>
+      <a href="https://www.raspberrypi.com/" target="_blank">
+        <img src="/images/rpi_small.png" alt="Raspberry Pi Logo" class="logo-small-top" style = "top: 4rem;"/>
       </a>
       <div class="tilt-logo" data-tilt data-tilt-max="15" data-tilt-speed="400">
         <img src="/images/logo.svg" alt="Logo" class="logo" />
       </div>
 
-            <!-- Original cranes -->
+            
       <img src="/images/crane1a.png" alt="Paper Crane" class="craneflipped" style="top: 50%; left: 5%;">
       <img src="/images/crane1a.png" alt="Paper Crane" class="craneflipped" style="top: 5%; left: 70%;">
       <img src="/images/crane1a.png" alt="Paper Crane" class="crane" style="top: 20%; right: 10%;">
@@ -239,7 +305,7 @@ import Footer from "../components/shared/footer.astro";
     </header>
 
     <div class="white-section">
-      <img src="/images/crane.png" style="width:50%; height:auto; z-index:5; margin-bottom:0px;"/>
+      <img src="/images/laptop.png" style="width:50%; height:auto; z-index:5; margin-bottom:0px;"/>
       <div class = "laptop-crane" style="top:115%; left:30%;">
         <img src="/images/crane1a.png" >
       </div>
@@ -354,7 +420,6 @@ import Footer from "../components/shared/footer.astro";
       <div class="laptop-crane" style="top:106%; left:30%; width:3%; transform: rotate(25deg); z-index:-10;">
         <img src="/images/crane6.png">
       </div>
-      <!-- Lower cranes, still behind the laptop -->
       <div class="laptop-crane" style="top:128%; left:26%; width:6%; transform: rotate(15deg); z-index:-10;">
         <img src="/images/crane1a.png">
       </div>
@@ -448,7 +513,7 @@ import Footer from "../components/shared/footer.astro";
         <h1>Is this all free?</h1>
         <p>Yes, all of it is free! Food, drinks, snacks and swag are all provided. 
           All you need to bring is a laptop to code on, a charger and if you'd like, a cool project to work on!
-          All alergies and dietary requirements will also be catered for.
+          Allergens and Dietary requirements will be taken into consideration but may not be catered for. 
         </p>
       </Card2>
       <Card2>
@@ -501,40 +566,68 @@ import Footer from "../components/shared/footer.astro";
       
     </div>
 
-    <div class="white-section">
-      <Grid1>
-      <Card3>
-        <div class="wrapper"> 
-          <img src="images/aromi.png" alt="Aromi logo" />
-        </a>
-      </div>
-        
-           <p>Aromi</p> 
-         </Card3> 
-      <Card3>
-        <div class="wrapper">
-        
-          <img src="images/raspberrypi-logo.png" alt="Raspberry Pi logo" />
-         </div>
-        <p>Raspberry Pi</p> </Card3>
-      
-      <Card3>
-        <div class="wrapper">
-        
-          <img src="images/github-logo.png" alt="GitHub logo"/>
-        </div>
-        
-        <p >GitHub</p> </Card3>
-      <Card3>
-        <div class="wrapper">
-        
-          <img src="images/learnanything.png" alt="Learn Anything" />
-        </div>
-        
-       <p>Learn Anything</p> </Card3>
-      </Grid1>
+    <div class="white-section"> 
+      <Grid1>  
+        <Card3 slot="partner">
+          <div class="wrapper">
+            <img src="images/raspberrypi-logo.png" alt="Raspberry Pi logo" />
+          </div>
+          <p>Raspberry Pi</p>
+        </Card3>
+        <Card3>  
+          <div class="wrapper">  
+            <img src="images/aromi.png" alt="Aromi logo" />  
+          </div>  
+          <p>Aromi</p>  
+        </Card3>  
+    
+        <Card3>  
+          <div class="wrapper">  
+            <img src="images/github-logo.png" alt="GitHub logo"/>  
+          </div>  
+          <p>GitHub</p>  
+        </Card3>  
+    
+        <Card3>  
+          <div class="wrapper">  
+            <img src="images/learnanything.png" alt="Learn Anything" />  
+          </div>  
+          <p>Learn Anything</p>  
+        </Card3>  
+        <Card3>  
+          <div class="wrapper">  
+            <img src="images/nandos.png" alt="Nando's" />  
+          </div>  
+          <p>Nando's</p>  
+        </Card3> 
+      </Grid1>  
     </div>
-  </div>
+    <div class="blue-section" style = "filter: drop-shadow(0 1rem 4rem rgba(98, 85, 187, 1));">
+      <div class="content-wrapper">  
+        <img src="images/logo.svg" alt="Cool as Hack" />  
+        <div style = "display:flex; justify-content: center;
+        align-items: center; ">
+          <Footercolumn>
+            <a href = "https://youthacks.org">Youthacks</a>
+          </Footercolumn>  
+          -
+          <Footercolumn>
+            <a href = "https://youthacks.org/contact-us">Contact</a>
+          </Footercolumn>
+          -
+          <Footercolumn>
+            <a href = "https://youthacks.org/donate">Support Us</a>
+          </Footercolumn>
+          -
+          <Footercolumn>
+            <a href = "https://www.raspberrypi.org/safeguarding/">Safeguarding</a>
+          </Footercolumn>
+        </div>
+        <p style = "font-size:0.7rem; font-family: sans-serif;"> © 2025 Youthacks. Registering for UK charity status. Fiscally sponsored by Hack Club, 
+        a 501(c)(3) nonprofit (EIN: 81-2908499)</p>
+      </div>
+      
+    </div>
 
   <!-- <script>
     const whiteSection = document.querySelector('.white-section');
@@ -589,6 +682,6 @@ import Footer from "../components/shared/footer.astro";
     });
   </script> -->
   
-<Footer/>
+  
 </body>
 
