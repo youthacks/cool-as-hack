@@ -1,0 +1,218 @@
+---
+
+import headerBg from '../assets/header_bg.png';
+import crane1a from '../assets/crane1a.png';
+import crane1b from '../assets/crane1b.png';
+---
+
+<style 
+  is:global
+  define:vars={{
+    bg: `url("${headerBg}")`, 
+    crane1a: `url("${crane1a}")`,
+    crane1b: `url("${crane1b}")` 
+  }}
+>
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  color: white;
+  font-family: "Bungee", sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+header {
+  background-image: var(--bg);
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.crane,
+.craneflipped {
+  z-index: 5;
+  position: absolute;
+  pointer-events: auto;
+  width: 6%;
+  animation: flap 1s infinite alternate;
+}
+
+.crane::before,
+.craneflipped::before {
+  content: var(--crane1a);
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@keyframes flap {
+  0%   { content: var(--crane1b); transform: translateY(5px); }
+  50%  { content: var(--crane1a); transform: translateY(-5px); }
+  75%  { content: var(--crane1b); transform: translateY(5px); }
+  100% { content: var(--crane1a); transform: translateY(-5px); }
+}
+
+.craneflipped {
+  width: 10%;
+  animation: flap-flipped 1s infinite alternate;
+}
+
+@keyframes flap-flipped {
+  0%   { content: var(--crane1a); transform: translateY(5px) scaleX(-1); }
+  50%  { content: var(--crane1a); transform: translateY(-5px) scaleX(-1); }
+  75%  { content: var(--crane1b); transform: translateY(5px) scaleX(-1); }
+  100% { content: var(--crane1a); transform: translateY(-5px) scaleX(-1); }
+}
+
+.crane:hover,
+.craneflipped:hover {
+  transition: transform 0.1s ease-out, left 0.1s ease-out, top 0.1s ease-out;
+}
+
+.logo {
+  max-width: 800px;
+  min-width: 150px;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.5));
+  z-index: 10;
+  transition: transform 0.3s ease-in-out;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+}
+
+.youthacks-logo {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: 15%;
+  height: auto;
+  z-index: 10;
+}
+
+.rpi-logo {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 15%;
+  height: auto;
+  z-index: 10;
+}
+
+.white-section {
+  display: flex;
+  align-items: center;
+  padding: 4rem;
+}
+
+.blue-section {
+  display: flex;
+  align-items: center;
+  padding: 4rem;
+  background-color: #6255bb;
+}
+
+.white-section img {
+  width: 100%;
+  height: auto;
+  margin-right: 7rem;
+}
+
+.text-box {
+  padding: 1rem;
+  border-radius: 4px;
+  width: 100%;
+  color: #f40c54;
+}
+
+.gear {
+  width: 5%;
+  max-width: 5%;
+  height: auto;
+  position: absolute;
+  z-index: 4;
+  transition: transform 1s ease-in-out;
+}
+
+.gear:hover {
+  transform: scale(1.2) rotate(360deg);
+}
+
+.laptop-crane {
+  position: absolute;
+  width: 10%;
+  height: auto;
+  z-index: 0;
+}
+
+.laptop-crane img {
+  animation: crane-moving 2s infinite alternate ease-in-out;
+}
+
+@keyframes crane-moving {
+  0%   { transform: translateY(10px); }
+  100% { transform: translateY(-10px); }
+}
+
+.magenta-section {
+  display: flex;
+  align-items: center;
+  padding: 4rem;
+  background-color: #f10e52;
+}
+
+header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, white 100%);
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+header.hide-gradient::after {
+  opacity: 0;
+}
+
+.sponsor-section {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.sponsor-section .container {
+  margin: 0;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.sponsor-section .container img {
+  width: clamp(80px, 10vw, 150px) !important;
+  height: auto;
+}
+</style>
