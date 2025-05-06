@@ -1,9 +1,15 @@
 <style>
     .image {
       object-fit: contain;
+      margin: auto;
+      display: flex;
+      width: 50%;
     }
     .container {
-      display: block;
+      justify-content: center; /* horizontal center */
+      align-items: center;   
+      display: flex;
+      width: 70%;
       min-height: inherit;
       margin: 2em;
       border-radius: 20px;
@@ -17,6 +23,9 @@
     }
     .container :global(.wrapper) {
       height: inherit;
+      justify-content: center;
+      display: flex;
+      align-items: center;
     }
     .container :global(div img) {
       width: 100%;
@@ -24,7 +33,7 @@
       height: 20vh;
       display: flex;
       margin: auto;
-  
+      
       border-radius: 18px;
       user-drag: none;
       -webkit-user-drag: none;

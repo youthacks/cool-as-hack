@@ -219,31 +219,18 @@ import Laptop from "../assets/laptop.png";
     .white-section {
       /* grid-template-columns: 1fr 1fr ; */
       align-items: center;
-      padding: 4rem;
+      /* padding: 2rem; */
       display:flex;
+      
     }
     @media only screen and (max-width: 900px) {
         .white-section {
-          padding: 0rem;
+          /* padding: 0rem; */
           align-items: center;
           display: block;
         }
       }
 
-    .laptop {
-      width:80%;
-      height:auto;
-      margin:auto;
-      z-index:5;
-      margin-bottom:0px;
-      display:flex;
-    }
-    @media only screen and (max-width: 900px) {
-        .laptop {
-          width: 100%;
-        }
-      }
-    
     .blue-section {
       display: flex;
       padding: 4rem;
@@ -251,7 +238,7 @@ import Laptop from "../assets/laptop.png";
       justify-content: center; /* horizontal center */  
       align-items: center;  
       
-    }
+    } */
     @media only screen and (max-width: 900px) {
         .blue-section {
           display: block;
@@ -430,7 +417,7 @@ import Laptop from "../assets/laptop.png";
   }
 
   .intro-grid{
-    display: grid;
+      display: flex;
     grid-template-columns: 1fr 2fr;
     grid-template-rows: max-content
   }
@@ -473,10 +460,7 @@ import Laptop from "../assets/laptop.png";
 
     </header>
       <div class="intro-grid">
-        <div class="white-section">
-          <Image alt="" src={Laptop} class="laptop"/>
-        </div>
-      
+    
       
         <Card1>
           <h1>What Is Cool As Hack?</h1>
