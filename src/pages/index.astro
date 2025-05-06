@@ -231,8 +231,9 @@ import Laptop from "../assets/laptop.png";
       }
 
     .laptop {
-      width:50%;
+      width:80%;
       height:auto;
+      margin:auto;
       z-index:5;
       margin-bottom:0px;
       display:flex;
@@ -427,6 +428,12 @@ import Laptop from "../assets/laptop.png";
     background:#6255bb; 
     cursor: pointer;
   }
+
+  .intro-grid{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: max-content
+  }
   </style>
 </head>
 <body class="loading">
@@ -465,145 +472,36 @@ import Laptop from "../assets/laptop.png";
       <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js"></script>
 
     </header>
-
-    <div class="white-section">
-      <Image alt="" src={Laptop} class="laptop"/>
-      <div class="laptop-crane" style="top:115%; left:30%;">
-        <Image alt="C" src={crane1a} />
-    </div>
-    <div class="laptop-crane" style="top:120%; left:20%; width:5%; transform: rotate(45deg);">
-        <Image alt="C" src={crane1b} />
-    </div>
-    <div class="laptop-crane" style="top:130%; left:30%; width:2%; transform: rotate(-20deg); z-index:20;">
-        <Image alt="C" src={crane1b} />
-    </div>
-    <div class="laptop-crane" style="top:110%; left:30%; width:5%; transform: rotate(-10deg); z-index:20;">
-        <Image alt="C" src={crane2} />
-    </div>
-    
-    <div class="laptop-crane" style="top:137%; left:20%; width:6%; transform: rotate(30deg) scaleX(-1);">
-        <Image alt="C" src={crane2} />
-    </div>
-    <div class="laptop-crane" style="top:107%; left:22%; width:6%; transform: rotate(30deg) scaleX(-1);">
-        <Image alt="C" src={crane3} />
-    </div>
-    <div class="laptop-crane" style="top:110%; left:35%; width:5%; transform: rotate(5deg); z-index:20;">
-        <Image alt="C" src={crane4} />
-    </div>
-    <div class="laptop-crane" style="top:107%; left:12%; width:6%; transform: rotate(0deg); z-index:20;">
-        <Image alt="C" src={crane5} />
-    </div>
-    <div class="laptop-crane" style="top:130%; left:15%; width:4%; transform: rotate(-20deg); z-index:20;">
-        <Image alt="C" src={crane6} />
-    </div>
-    <div class="laptop-crane" style="top:130%; left:35%; width:6%; transform: rotate(10deg); z-index:20;">
-        <Image alt="C" src={crane2} />
-    </div>
-    <div class="laptop-crane" style="top:132%; left:28%; width:4%; transform: rotate(-10deg) scaleX(-1); z-index:20;">
-        <Image alt="C" src={crane1b} />
-    </div>
-    <div class="laptop-crane" style="top:108%; left:16%; width:5%; transform: rotate(-10deg) scaleX(-1); z-index:20;">
-        <Image alt="C" src={crane6} />
-    </div>
-    <div class="laptop-crane" style="top:110%; left:5%; width:4%; transform: rotate(-30deg) scaleX(-1); z-index:20;">
-        <Image alt="C" src={crane3} />
-    </div>
-    
-    <div class="laptop-crane" style="top:130%; left:43%; width:8%; transform: rotate(-30deg); z-index:20;">
-        <Image alt="C" src={crane6} />
-    </div>
-    <div class="laptop-crane" style="top:125%; left:10%; width:6%; transform: rotate(15deg); z-index:10;">
-        <Image alt="C" src={crane1a} />
-    </div>
-    <div class="laptop-crane" style="top:112%; left:40%; width:4%; transform: rotate(-25deg); z-index:15;">
-        <Image alt="C" src={crane1b} />
-    </div>
-    <div class="laptop-crane" style="top:140%; left:18%; width:5%; transform: rotate(30deg) scaleX(-1); z-index:5;">
-        <Image alt="C" src={crane2} />
-    </div>
-    <div class="laptop-crane" style="top:135%; left:22%; width:3%; transform: rotate(-45deg); z-index:25;">
-        <Image alt="C" src={crane3} />
-    </div>
-    <div class="laptop-crane" style="top:117%; left:38%; width:7%; transform: rotate(5deg); z-index:12;">
-        <Image alt="C" src={crane4} />
-    </div>
-    <div class="laptop-crane" style="top:133%; left:8%; width:4%; transform: rotate(-10deg); z-index:18;">
-        <Image alt="C" src={crane5} />
-    </div>
-    <div class="laptop-crane" style="top:115%; left:26%; width:6%; transform: rotate(60deg); z-index:14;">
-        <Image alt="C" src={crane6} />
-    </div>
-    <div class="laptop-crane" style="top:120%; left:45%; width:5%; transform: rotate(-15deg) scaleX(-1); z-index:20;">
-        <Image alt="C" src={crane1a} />
-    </div>
-    <div class="laptop-crane" style="top:137%; left:38%; width:4%; transform: rotate(10deg); z-index:9;">
-        <Image alt="C" src={crane2} />
-    </div>
-    <div class="laptop-crane" style="top:142%; left:12%; width:6%; transform: rotate(-35deg); z-index:22;">
-        <Image alt="C" src={crane5} />
-    </div>
-    <div class="laptop-crane" style="top:125%; left:32%; width:7%; transform: rotate(20deg) scaleX(-1); z-index:17;">
-        <Image alt="C" src={crane3} />
-    </div>
-    <div class="laptop-crane" style="top:110%; left:48%; width:5%; transform: rotate(-10deg); z-index:11;">
-        <Image alt="C" src={crane4} />
-    </div>
-     <div class="laptop-crane" style="top:135%; left:26%; width:3%; transform: rotate(45deg); z-index:13;">
-        <Image alt="C" src={crane6} />
-    </div>
-    <div class="laptop-crane" style="top:120%; left:18%; width:6%; transform: rotate(5deg); z-index:19;">
-        <Image alt="C" src={crane1b} />
-    </div>
-    <div class="laptop-crane" style="top:110%; left:28%; width:6%; transform: rotate(10deg); z-index:-10;">
-        <Image alt="C" src={crane1a} />
-    </div>
-    <div class="laptop-crane" style="top:112%; left:32%; width:4%; transform: rotate(-20deg); z-index:-10;">
-        <Image alt="C" src={crane3} />
-    </div>
-    <div class="laptop-crane" style="top:108%; left:30%; width:5%; transform: rotate(5deg) scaleX(-1); z-index:-10;">
-        <Image alt="C" src={crane2} />
-    </div>
-    <div class="laptop-crane" style="top:115%; left:26%; width:3%; transform: rotate(15deg); z-index:-10;">
-        <Image alt="C" src={crane6} />
-    </div>
-    <div class="laptop-crane" style="top:118%; left:33%; width:7%; transform: rotate(-30deg); z-index:-10;">
-        <Image alt="C" src={crane4} />
-    </div>
-    <div class="laptop-crane" style="top:109%; left:25%; width:6%; transform: rotate(20deg); z-index:-10;">
-        <Image alt="C" src={crane1b} />
-    </div>
-    <div class="laptop-crane" style="top:122%; left:29%; width:5%; transform: rotate(-15deg); z-index:-10;">
-        <Image alt="C" src={crane5} />
-    </div>
-    <div class="laptop-crane" style="top:113%; left:27%; width:4%; transform: rotate(35deg); z-index:-10;">
-        <Image alt="C" src={crane3} />
-    </div>
-    <div class="laptop-crane" style="top:116%; left:34%; width:6%; transform: rotate(-10deg); z-index:-10;">
-        <Image alt="C" src={crane2} />
-    </div>
-    
-      <Card1>
-        <h1>What Is Cool As Hack?</h1>
-        <p>Cool as hack is a <a href="https://en.wikipedia.org/wiki/Hackathon">Hackathon</a>
-        for Secondary school students, in partnership with <a href="https://raspberrypi.org">the Raspberry Pi Foundation</a>. Held right here in Cambridge,
-        Cool as hack is a hackathon where
-        you get to work on the coolest projects you can,
-        and then show them to the world in Raspberry Pi's
-        global competition, <a href="https://online.coolestprojects.org/">Coolest projects</a>.</p>
-      </Card1>
-      <Image alt="G" src={gear} class="gear" style="top: 20%; left: 5%;" />
-      <Image alt="G"src={gear} class="gear" style="top: 40%; right: 5%;" />
-      <Image alt="G"src={gear} class="gear" style="top: 115%; right: 5%;" />
-      <Image alt="G"src={gear} class="gear" style="top: 6%; right: 40%;" />
-      <Image alt="G"src={gear} class="gear"style="top: 80%; right: 22%;" />
-      <Image alt="G"src={gear} class="gear" style="top: 65%; left: 30%;" / >
-        <!-- <img src="/images/gear.png" class="gear" style="top: 20%; left: 5%;">
-      <img src="/images/gear.png" class="gear" style="top: 40%; right: 5%;">
-      <img src="/images/gear.png" class="gear" style="top: 115%; right: 5%;">
-      <img src="/images/gear.png" class="gear" style="top: 6%; right: 40%;">
-      <img src="/images/gear.png" class="gear" style="top: 80%; right: 22%;">
-      <img src="/images/gear.png" class="gear" style="top: 65%; left: 30%;"> -->
+      <div class="intro-grid">
+        <div class="white-section">
+          <Image alt="" src={Laptop} class="laptop"/>
+        </div>
       
+      
+        <Card1>
+          <h1>What Is Cool As Hack?</h1>
+          <p>Cool as hack is a <a href="https://en.wikipedia.org/wiki/Hackathon">Hackathon</a>
+          for Secondary school students, in partnership with <a href="https://raspberrypi.org">the Raspberry Pi Foundation</a>. Held right here in Cambridge,
+          Cool as hack is a hackathon where
+          you get to work on the coolest projects you can,
+          and then show them to the world in Raspberry Pi's
+          global competition, <a href="https://online.coolestprojects.org/">Coolest projects</a>.</p>
+        </Card1>
+        <Image alt="G" src={gear} class="gear" style="top: 0; left: 5%;" />
+        <Image alt="G"src={gear} class="gear" style="top: 40%; right: 5%;" />
+        <Image alt="G"src={gear} class="gear" style="top: 108%; right: 5%;" />
+        <Image alt="G"src={gear} class="gear" style="top: 6%; right: 40%;" />
+        <Image alt="G"src={gear} class="gear"style="top: 80%; right: 22%;" />
+        <Image alt="G"src={gear} class="gear" style="top: 65%; left: 30%;" / >
+          <!-- <img src="/images/gear.png" class="gear" style="top: 20%; left: 5%;">
+        <img src="/images/gear.png" class="gear" style="top: 40%; right: 5%;">
+        <img src="/images/gear.png" class="gear" style="top: 115%; right: 5%;">
+        <img src="/images/gear.png" class="gear" style="top: 6%; right: 40%;">
+        <img src="/images/gear.png" class="gear" style="top: 80%; right: 22%;">
+        <img src="/images/gear.png" class="gear" style="top: 65%; left: 30%;"> -->
+        
+      </div>
+
     </div>
     <div class = "blue-section" style = "padding-bottom:0rem;">
       <Card2>
@@ -651,15 +549,15 @@ import Laptop from "../assets/laptop.png";
     </div>
     <div class="magenta-section" >
       <h2 style="text-align: center; margin-left: auto; margin-right:auto; margin-bottom:4rem;">
-        Doors open & Registration - 8:45 
-        <br><br> Opening Ceremony - 9:00 <br><br>  
-        Form teams, start working on projects! - 9:45 <br><br>
-      Lunch - 12:00 <br><br>
-      AMAs with our guest speakers - 13:00
-      <br><br> Dinner - 17:00
-      <br><br> Project Submissions and Demos - 18:30
-      <br><br> Closing Ceremony - 20:00
-      <br><br> Home! - 20:45</h2>
+        Doors open & Registration - 9:00am 
+        <br><br> Opening Ceremony - 9:30am <br><br>  
+        Form teams, start working on projects! - 9:45am <br><br>
+      Lunch - 12:00pm <br><br>
+      AMAs with our guest speakers - 1:00pm
+      <br><br> Dinner - 5pm
+      <br><br> Project Submissions and Demos - 6:30pm
+      <br><br> Closing Ceremony - 7pm
+      <br><br> Home! - 7:30pm</h2>
       
     </div>
    
