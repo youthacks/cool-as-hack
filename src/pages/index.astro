@@ -99,6 +99,18 @@ import Laptop from "../assets/laptop.png";
       -webkit-user-select: none;
       -ms-user-select: none;
     }
+ 
+    .info-box {  
+        background-color: white;  
+        color: #6255bb;
+        display: inline-block; 
+        padding: 6px 12px;  
+        font-size: 1em;  
+        border-radius: 1em;
+        margin-top: 3em;  
+        box-shadow: 0 1em 2em rgba(0, 0, 0, 0.1); 
+        text-align: center; 
+    }
 
 
     .container {
@@ -117,6 +129,7 @@ import Laptop from "../assets/laptop.png";
       align-items: center;
       text-align: center;
       position: relative;
+      flex-direction: column;
     }
 
     .crane, .craneflipped {
@@ -380,30 +393,57 @@ import Laptop from "../assets/laptop.png";
       text-align: center;
     }
 
-    /* target every <Image alt=""> inside a Card1 container in the sponsor section */
+    
     .sponsor-section .container Image {
       width: clamp(80px, 10vw, 150px) !important;
       height: auto;
     }
 
-    .fixed-bottom-button {
-      border-radius: 1rem 1rem 1rem 1rem;
-      font-family: "Bungee", sans-serif;
-    position: absolute;
-    bottom: 1.5%;
-    left: 50%;
-    font-size: 2rem;
-    transform: translate(-50%, -50%);
-    width: 30%;
-    padding: 1rem;
-    background: transparent;
-    color: white;
-    text-align: center;
-    z-index: 10000; /* on top of loading screen */
-    border: none;
-    border: 3px solid #6255bb;
-    border-color: #6255bb;
-  }
+.fixed-bottom-button {  
+   
+  border-radius: 1rem;  
+  font-family: "Bungee", sans-serif;  
+  width: 30%;  
+  padding: 1rem;  
+  background: transparent;  
+  color: white;  
+  text-align: center;  
+  font-size: 3em;
+  z-index: 10000;   
+  border: 3px solid #6255bb;  
+  position: sticky;  
+  top: 0; 
+  transition: all 0.5s ease;   
+  margin: 50px auto; 
+}
+
+.initial-position {  
+  position: relative;
+  bottom:1.5%;
+  left:0%; 
+  display: inline-block;  
+  transition: all 0.5s ease;  
+}  
+
+.sticky-fixed {  
+  position: fixed;  
+  top: 20px; 
+  right: 20px; 
+  width: auto; 
+  z-index: 9999;   
+  border-radius: 1rem;  
+  font-family: "Bungee", sans-serif;  
+  font-size: 2rem;  
+  padding: 1rem;  
+  border: 3px solid #6255bb;  
+  background: #6255bb;  
+  color: white;  
+  border-color: #6255bb;  
+  cursor: pointer;  
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);  
+  transition: all 0.5s ease;  
+}
+  
   @media only screen and (max-width: 900px) {
     .fixed-bottom-button {
       width: 80%;
@@ -411,7 +451,8 @@ import Laptop from "../assets/laptop.png";
   }
 
   .fixed-bottom-button:hover {
-    background:#6255bb; 
+    background:#978bdd; 
+    border: 3px solid #978bdd;  
     cursor: pointer;
   }
 
@@ -427,9 +468,8 @@ import Laptop from "../assets/laptop.png";
     <div class="spinner"></div>
     <div>Loading...</div>
   </div>
-  <button class="fixed-bottom-button" onclick="window.location.href='https://youthacks.fillout.com/sign-up';">
-    Sign Up
-  </button>
+  
+  
   <main class="container">
     <!-- <div class="gears" style="position: absolute; overflow: hidden; z-index: 0;">
       <Image alt="" src={gear} class="gear" style="top: 20rem; left: 5rem;" style="z-index:10"/>
@@ -446,6 +486,12 @@ import Laptop from "../assets/laptop.png";
       <div class="tilt-logo" data-tilt data-tilt-max="15" data-tilt-speed="400">
         <Image alt="" src={mainLogo} alt="Logo" class="logo" />
       </div>
+      <div class="info-box">  
+        May 24th, Raspberry Pi HQ Cambridge
+      </div>
+      <button class="fixed-bottom-button initial-position" id="signupBtn" onclick="window.location.href='https://youthacks.fillout.com/sign-up';">
+    Sign Up
+  </button>
 
       <Image src={crane1a} alt="Crane" class="craneflipped" style="top: 50%; left: 5%;" />
       <Image src={crane1a} alt="Crane" class="craneflipped" style="top: 5%; left: 70%;" />
@@ -662,7 +708,20 @@ import Laptop from "../assets/laptop.png";
         document.body.classList.remove('loading');
         loadingScreen.classList.add('hidden');
         setTimeout(() => loadingScreen.remove(), 300);
+
       });
+      const btn = document.getElementById('signupBtn');  
+const originalOffsetTop = btn.offsetTop;  
+
+window.addEventListener('scroll', () => {  
+  if (window.scrollY > originalOffsetTop) {  
+    btn.classList.add('sticky-fixed');  
+    btn.classList.remove('initial-position');  
+  } else {  
+    btn.classList.remove('sticky-fixed');  
+    btn.classList.add('initial-position');  
+  }  
+});
     </script>
 </body>
 
