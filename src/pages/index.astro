@@ -284,7 +284,7 @@ import Laptop from "../assets/laptop.png";
     }
 
     .gear {
-      /* width: 5%; */
+      width: 5%;
       max-width: 4rem;
       height: auto;
       position: absolute;
@@ -297,7 +297,16 @@ import Laptop from "../assets/laptop.png";
       -webkit-user-select: none;
       -ms-user-select: none;
     }
-
+    @media only screen and (max-width: 900px) {
+      .gear {
+        max-width: 2rem;
+      }
+    }
+    .footer {
+      display:flex;
+       justify-content: center;
+        align-items: center;
+    }
     .gear:hover{
       transform:scale(1.2) rotate(360deg);
     }
@@ -458,9 +467,6 @@ import Laptop from "../assets/laptop.png";
       <div class="tilt-logo" data-tilt data-tilt-max="15" data-tilt-speed="400">
         <Image alt="" src={mainLogo} alt="Logo" class="logo" />
       </div>
-      <div class="info-box">  
-        Saturday May 24th, Raspberry Pi HQ Cambridge
-      </div>
       <button class="fixed-bottom-button" onclick="window.location.href='https://youthacks.fillout.com/sign-up';">
         Sign Up
       </button>
@@ -485,11 +491,9 @@ import Laptop from "../assets/laptop.png";
           and then show them to the world in their
           global competition, <a href="https://online.coolestprojects.org/">Coolest projects</a>.</p>
         </Card1>
-        <Image alt="G" src={gear} class="gear" style="top: 0; left: 5%;" />
+        <Image alt="G" src={gear} class="gear" style="top: 20%; left: 5%;" />
         <Image alt="G"src={gear} class="gear" style="top: 40%; right: 5%;" />
         <Image alt="G"src={gear} class="gear" style="top: 108%; right: 5%;" />
-        <Image alt="G"src={gear} class="gear" style="top: 6%; right: 40%;" />
-        <Image alt="G"src={gear} class="gear"style="top: 80%; right: 22%;" />
         <Image alt="G"src={gear} class="gear" style="top: 65%; left: 30%;" / >
           <!-- <img src="/images/gear.png" class="gear" style="top: 20%; left: 5%;">
         <img src="/images/gear.png" class="gear" style="top: 40%; right: 5%;">
@@ -547,6 +551,8 @@ import Laptop from "../assets/laptop.png";
     </div>
     <div class="magenta-section" >
       <h2 style="text-align: center; margin-left: auto; margin-right:auto; margin-bottom:4rem;">
+        Saturday 24th May, Raspberry Pi Foundation <br><br>
+        
         Doors open & Registration - 9:00am 
         <br><br> Opening Ceremony - 9:30am <br><br>  
         Form teams, start working on projects! - 10:00am <br><br>
